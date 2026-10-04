@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>chennai_night_shelters.geojson</name>
+	<Schema name="chennai_night_shelters" id="J_chennai_night_shelters_SSSSDDSISSISISI">
+		<SimpleField type="string" name="ADDRESS"><displayName>ADDRESS</displayName>
+</SimpleField>
+		<SimpleField type="string" name="COORDINATO"><displayName>COORDINATO</displayName>
+</SimpleField>
+		<SimpleField type="string" name="FINAL_CODE"><displayName>FINAL_CODE</displayName>
+</SimpleField>
+		<SimpleField type="string" name="GPS_POINT"><displayName>GPS_POINT</displayName>
+</SimpleField>
+		<SimpleField type="double" name="LATITUDE"><displayName>LATITUDE</displayName>
+</SimpleField>
+		<SimpleField type="double" name="LONGITUDE"><displayName>LONGITUDE</displayName>
+</SimpleField>
+		<SimpleField type="string" name="NAME_OF_TH"><displayName>NAME_OF_TH</displayName>
+</SimpleField>
+		<SimpleField type="int" name="OBJECTID"><displayName>OBJECTID</displayName>
+</SimpleField>
+		<SimpleField type="string" name="REGION"><displayName>REGION</displayName>
+</SimpleField>
+		<SimpleField type="string" name="SI_MOBILE"><displayName>SI_MOBILE</displayName>
+</SimpleField>
+		<SimpleField type="int" name="SL_N0"><displayName>SL_N0</displayName>
+</SimpleField>
+		<SimpleField type="string" name="TYPE_SHELT"><displayName>TYPE_SHELT</displayName>
+</SimpleField>
+		<SimpleField type="int" name="WARD"><displayName>WARD</displayName>
+</SimpleField>
+		<SimpleField type="string" name="ZHO_SO"><displayName>ZHO_SO</displayName>
+</SimpleField>
+		<SimpleField type="int" name="ZONE"><displayName>ZONE</displayName>
+</SimpleField>
+	</Schema>
+	<Style id="chennai_night_shelters_style">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>$[chennai_night_shelters/ADDRESS/displayName]</b></td><td>$[chennai_night_shelters/ADDRESS]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/COORDINATO/displayName]</b></td><td>$[chennai_night_shelters/COORDINATO]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/FINAL_CODE/displayName]</b></td><td>$[chennai_night_shelters/FINAL_CODE]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/GPS_POINT/displayName]</b></td><td>$[chennai_night_shelters/GPS_POINT]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/LATITUDE/displayName]</b></td><td>$[chennai_night_shelters/LATITUDE]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/LONGITUDE/displayName]</b></td><td>$[chennai_night_shelters/LONGITUDE]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/NAME_OF_TH/displayName]</b></td><td>$[chennai_night_shelters/NAME_OF_TH]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/OBJECTID/displayName]</b></td><td>$[chennai_night_shelters/OBJECTID]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/REGION/displayName]</b></td><td>$[chennai_night_shelters/REGION]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/SI_MOBILE/displayName]</b></td><td>$[chennai_night_shelters/SI_MOBILE]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/SL_N0/displayName]</b></td><td>$[chennai_night_shelters/SL_N0]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/TYPE_SHELT/displayName]</b></td><td>$[chennai_night_shelters/TYPE_SHELT]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/WARD/displayName]</b></td><td>$[chennai_night_shelters/WARD]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/ZHO_SO/displayName]</b></td><td>$[chennai_night_shelters/ZHO_SO]</td></tr>
+  <tr><td><b>$[chennai_night_shelters/ZONE/displayName]</b></td><td>$[chennai_night_shelters/ZONE]</td></tr>
+</table>
+$[description]]]></text>
+		</BalloonStyle>
+	</Style>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.7, Thiru nagar Extn. Thirunagar, Thiruvotiyur, Chennai</SimpleData>
+				<SimpleData name="COORDINATO">Jagadesan 9789996895</SimpleData>
+				<SimpleData name="FINAL_CODE">NS01</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.168584</SimpleData>
+				<SimpleData name="LONGITUDE">80.304493</SimpleData>
+				<SimpleData name="NAME_OF_TH">Rehobath educational trust,</SimpleData>
+				<SimpleData name="OBJECTID">1</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Ganga - SI 8870406628</SimpleData>
+				<SimpleData name="SL_N0">1</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">5</SimpleData>
+				<SimpleData name="ZHO_SO">Thiru. Sheik Meeran (S.O) 9445025801 9444090150</SimpleData>
+				<SimpleData name="ZONE">1</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.30449299999999,13.168584,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS"> CMDA trunk terminal Madhavaram, Chennai -60</SimpleData>
+				<SimpleData name="COORDINATO">P. Authi Krishnasamy   &apos;7397406385,  8939281923</SimpleData>
+				<SimpleData name="FINAL_CODE">NS04</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.148011</SimpleData>
+				<SimpleData name="LONGITUDE">80.231316</SimpleData>
+				<SimpleData name="NAME_OF_TH">Village education women and children re habitations society ,</SimpleData>
+				<SimpleData name="OBJECTID">2</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Kesavan  9543173714</SimpleData>
+				<SimpleData name="SL_N0">4</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">26</SimpleData>
+				<SimpleData name="ZHO_SO">Jawhar George (SO)    9444464412</SimpleData>
+				<SimpleData name="ZONE">3</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.23131600000001,13.148011,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Raja Rathinam Nagar, Kodungaiyur,Chennai-118</SimpleData>
+				<SimpleData name="COORDINATO">Vasantha  9941760427</SimpleData>
+				<SimpleData name="FINAL_CODE">NS07</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.128333</SimpleData>
+				<SimpleData name="LONGITUDE">80.267675</SimpleData>
+				<SimpleData name="NAME_OF_TH">Arunodhaya ,</SimpleData>
+				<SimpleData name="OBJECTID">3</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Suresh  9445025834</SimpleData>
+				<SimpleData name="SL_N0">7</SimpleData>
+				<SimpleData name="TYPE_SHELT">Boy Children</SimpleData>
+				<SimpleData name="WARD">37</SimpleData>
+				<SimpleData name="ZHO_SO">Ramesh 9445025841</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.267675,13.128333,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.1350/33, 19th East Cross Street, MKB Nagar, Chennai-39</SimpleData>
+				<SimpleData name="COORDINATO">Josephin Steffi 8754558488</SimpleData>
+				<SimpleData name="FINAL_CODE">NS08</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.124278</SimpleData>
+				<SimpleData name="LONGITUDE">80.262845</SimpleData>
+				<SimpleData name="NAME_OF_TH">Real Charitable trust,</SimpleData>
+				<SimpleData name="OBJECTID">4</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Suresh  9445025834</SimpleData>
+				<SimpleData name="SL_N0">8</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">37</SimpleData>
+				<SimpleData name="ZHO_SO">Ramesh 9445025841</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.262845,13.124278,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS"> Cheriyan Nagar, Old Community hall, 3rd street, New Washermenpet, Chennai -21</SimpleData>
+				<SimpleData name="COORDINATO">Hemalatha 7708409253</SimpleData>
+				<SimpleData name="FINAL_CODE">NS09</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.109442</SimpleData>
+				<SimpleData name="LONGITUDE">80.281435</SimpleData>
+				<SimpleData name="NAME_OF_TH">Karunalaya ,</SimpleData>
+				<SimpleData name="OBJECTID">5</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Muthumani  - SI 9445025839</SimpleData>
+				<SimpleData name="SL_N0">9</SimpleData>
+				<SimpleData name="TYPE_SHELT">Girl Children</SimpleData>
+				<SimpleData name="WARD">39</SimpleData>
+				<SimpleData name="ZHO_SO">Lakshmanan   (SO)    9940024591</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2978762,13.1414441,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">CDH Hospital, Tondiarpet,Chennai -81</SimpleData>
+				<SimpleData name="COORDINATO">Madhan,9841997464</SimpleData>
+				<SimpleData name="FINAL_CODE">NS10</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.127218</SimpleData>
+				<SimpleData name="LONGITUDE">80.290029</SimpleData>
+				<SimpleData name="NAME_OF_TH">Anbagam ,</SimpleData>
+				<SimpleData name="OBJECTID">6</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Subbarayalu - SI 9894665642</SimpleData>
+				<SimpleData name="SL_N0">10</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women with Psycho Social need</SimpleData>
+				<SimpleData name="WARD">43</SimpleData>
+				<SimpleData name="ZHO_SO">Prabakaran (SO) 9444362700</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.290029,13.127218,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">CDH Hospital, Tondiarpet,Chennai -82</SimpleData>
+				<SimpleData name="COORDINATO">Harsh Amudhini 9629362868</SimpleData>
+				<SimpleData name="FINAL_CODE">NS11</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.127218</SimpleData>
+				<SimpleData name="LONGITUDE">80.290029</SimpleData>
+				<SimpleData name="NAME_OF_TH">Anbagam ,</SimpleData>
+				<SimpleData name="OBJECTID">7</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Subbarayalu - SI 9894665642</SimpleData>
+				<SimpleData name="SL_N0">11</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men with Psycho Social needs</SimpleData>
+				<SimpleData name="WARD">43</SimpleData>
+				<SimpleData name="ZHO_SO">Prabakaran (SO) 9444362700</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.290029,13.127218,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Stanley Hospital,Old Jail Road, Chennai-01</SimpleData>
+				<SimpleData name="COORDINATO">Sasikala 9080116536</SimpleData>
+				<SimpleData name="FINAL_CODE">NS12</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.105854</SimpleData>
+				<SimpleData name="LONGITUDE">80.285441</SimpleData>
+				<SimpleData name="NAME_OF_TH">INDIA,</SimpleData>
+				<SimpleData name="OBJECTID">8</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Siva Balan,9445025855</SimpleData>
+				<SimpleData name="SL_N0">12</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –Women</SimpleData>
+				<SimpleData name="WARD">52</SimpleData>
+				<SimpleData name="ZHO_SO">Mapillai Durai (SO ) 9444138148</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.28544100000001,13.105854,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Stanley Hospital,Old Jail Road, Chennai-01</SimpleData>
+				<SimpleData name="COORDINATO">Vignesh 9842493255</SimpleData>
+				<SimpleData name="FINAL_CODE">NS13</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.105854</SimpleData>
+				<SimpleData name="LONGITUDE">80.285441</SimpleData>
+				<SimpleData name="NAME_OF_TH">Save Trust,</SimpleData>
+				<SimpleData name="OBJECTID">9</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Ananthkar 9445025852</SimpleData>
+				<SimpleData name="SL_N0">13</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –  Men</SimpleData>
+				<SimpleData name="WARD">52</SimpleData>
+				<SimpleData name="ZHO_SO">Krishnan 944502850</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.28544100000001,13.105854,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">        RSRM Hospital,Cemetery Road, Royapuram, Chennai-13.</SimpleData>
+				<SimpleData name="COORDINATO">P.John Aldo 9942050202</SimpleData>
+				<SimpleData name="FINAL_CODE">NS14</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.108993</SimpleData>
+				<SimpleData name="LONGITUDE">80.288402</SimpleData>
+				<SimpleData name="NAME_OF_TH">Rojavanam Senior citizens care centre,</SimpleData>
+				<SimpleData name="OBJECTID">10</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Ananthkar 94450225852</SimpleData>
+				<SimpleData name="SL_N0">14</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –  Men</SimpleData>
+				<SimpleData name="WARD">52</SimpleData>
+				<SimpleData name="ZHO_SO">Krishnan 9445025850</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.288402,13.108993,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">RSRM Hospital,Cemetery Road, Royapuram, Chennai-13.</SimpleData>
+				<SimpleData name="COORDINATO">Saranya 9600891311</SimpleData>
+				<SimpleData name="FINAL_CODE">NS15</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.108993</SimpleData>
+				<SimpleData name="LONGITUDE">80.288402</SimpleData>
+				<SimpleData name="NAME_OF_TH">Gracious Home,</SimpleData>
+				<SimpleData name="OBJECTID">11</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Ananthkar 94450225852</SimpleData>
+				<SimpleData name="SL_N0">15</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –Women</SimpleData>
+				<SimpleData name="WARD">52</SimpleData>
+				<SimpleData name="ZHO_SO">Krishnan 9445025850</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.288402,13.108993,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS"> Chennai Middle School, B.R.N. Colony, Chennai</SimpleData>
+				<SimpleData name="COORDINATO">Magimai,8122234039</SimpleData>
+				<SimpleData name="FINAL_CODE">NS16</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.114781</SimpleData>
+				<SimpleData name="LONGITUDE">80.26136</SimpleData>
+				<SimpleData name="NAME_OF_TH">PLANT Trust</SimpleData>
+				<SimpleData name="OBJECTID">12</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Kowshik- SI 9445025856</SimpleData>
+				<SimpleData name="SL_N0">16</SimpleData>
+				<SimpleData name="TYPE_SHELT">Boy Children</SimpleData>
+				<SimpleData name="WARD">56</SimpleData>
+				<SimpleData name="ZHO_SO">Mapillai Durai(SO) 9444138148</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.28617,13.1023033,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Rajiv Gandhi General Hospital, Park Town, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Surya 7402448383</SimpleData>
+				<SimpleData name="FINAL_CODE">NS17</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.081426</SimpleData>
+				<SimpleData name="LONGITUDE">80.277171</SimpleData>
+				<SimpleData name="NAME_OF_TH">Society for Women empowerment &amp; development education (SWEDEN),</SimpleData>
+				<SimpleData name="OBJECTID">13</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Saravana Kumar 9445025859</SimpleData>
+				<SimpleData name="SL_N0">17</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –Women</SimpleData>
+				<SimpleData name="WARD">58</SimpleData>
+				<SimpleData name="ZHO_SO">Vasudevan 9445190685</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.277171,13.081426,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Rajaji salai, Ibrahim street, Chennai -01</SimpleData>
+				<SimpleData name="COORDINATO">Tamilarasi 9042708702</SimpleData>
+				<SimpleData name="FINAL_CODE">NS18</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.00059</SimpleData>
+				<SimpleData name="LONGITUDE">80.202251</SimpleData>
+				<SimpleData name="NAME_OF_TH">Siga ,</SimpleData>
+				<SimpleData name="OBJECTID">14</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Kowshik- SI 9445025856</SimpleData>
+				<SimpleData name="SL_N0">18</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">60</SimpleData>
+				<SimpleData name="ZHO_SO">Mapillai Durai(SO) 9444138148</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.202251,13.00059,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Institue of obstetrics and gynecology Government Hospital, Egmore, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Bagavathi 8508739313</SimpleData>
+				<SimpleData name="FINAL_CODE">NS19</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.07369</SimpleData>
+				<SimpleData name="LONGITUDE">80.259208</SimpleData>
+				<SimpleData name="NAME_OF_TH">Your Hope is Remaining,</SimpleData>
+				<SimpleData name="OBJECTID">15</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Saravana Kumar 9445025859</SimpleData>
+				<SimpleData name="SL_N0">19</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –  Men</SimpleData>
+				<SimpleData name="WARD">61</SimpleData>
+				<SimpleData name="ZHO_SO">Vasudevan 9445190685</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.259208,13.07369,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.6, Sarvapalli street,  Mallishwari Nagar, Erukkancheri, Chennai – 118.</SimpleData>
+				<SimpleData name="COORDINATO">Julius 8015128934</SimpleData>
+				<SimpleData name="FINAL_CODE">NS06</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">Don Bosco Anbu Illam ,</SimpleData>
+				<SimpleData name="OBJECTID">46</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Suresh  9445025834</SimpleData>
+				<SimpleData name="SL_N0">6</SimpleData>
+				<SimpleData name="TYPE_SHELT">Boy Children</SimpleData>
+				<SimpleData name="WARD">37</SimpleData>
+				<SimpleData name="ZHO_SO">Ramesh 9445025841</SimpleData>
+				<SimpleData name="ZONE">4</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2658969,13.128448,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Kilpauk Medical College hospital campus, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Maria 7502663794</SimpleData>
+				<SimpleData name="FINAL_CODE">NS30</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">New Life Social Welfare centre,</SimpleData>
+				<SimpleData name="OBJECTID">47</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Karthick - SI 9884546562  7904025540</SimpleData>
+				<SimpleData name="SL_N0">30</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter- Women</SimpleData>
+				<SimpleData name="WARD">103</SimpleData>
+				<SimpleData name="ZHO_SO"> Jayamurugan (SO)    9962526363</SimpleData>
+				<SimpleData name="ZONE">8</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2434428,13.0769303,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Kilpauk Medical College hospital campus, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Thirumal prashanth 7373351598</SimpleData>
+				<SimpleData name="FINAL_CODE">NS31</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">Hope Vision India,</SimpleData>
+				<SimpleData name="OBJECTID">48</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Karthick - SI 9884546562  7904025540</SimpleData>
+				<SimpleData name="SL_N0">31</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter –  Men</SimpleData>
+				<SimpleData name="WARD">103</SimpleData>
+				<SimpleData name="ZHO_SO"> Jayamurugan (SO)    9962526363</SimpleData>
+				<SimpleData name="ZONE">8</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2422358,13.0758167,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Institute of Child Health, Egmore, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Krithika 9524211540</SimpleData>
+				<SimpleData name="FINAL_CODE">NS20</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.07369</SimpleData>
+				<SimpleData name="LONGITUDE">80.259208</SimpleData>
+				<SimpleData name="NAME_OF_TH">Trust Organization for Women Environment and Rural  (TOWER),</SimpleData>
+				<SimpleData name="OBJECTID">16</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Saravana Kumar 9445025859</SimpleData>
+				<SimpleData name="SL_N0">20</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter – Women</SimpleData>
+				<SimpleData name="WARD">61</SimpleData>
+				<SimpleData name="ZHO_SO">Vasudevan 9445190685</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.259208,13.07369,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Institute of obstetrics and gynecology Government Hospital, Egmore, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Anitha  8608932554</SimpleData>
+				<SimpleData name="FINAL_CODE">NS21</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.073489</SimpleData>
+				<SimpleData name="LONGITUDE">80.256931</SimpleData>
+				<SimpleData name="NAME_OF_TH">SEESHA,</SimpleData>
+				<SimpleData name="OBJECTID">17</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Saravana Kumar 9445025859</SimpleData>
+				<SimpleData name="SL_N0">21</SimpleData>
+				<SimpleData name="TYPE_SHELT">Special shelter – Women</SimpleData>
+				<SimpleData name="WARD">61</SimpleData>
+				<SimpleData name="ZHO_SO">Vasudevan 9445190685</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.25693099999999,13.073489,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Cox colony Chindaripet,  Chennai -02</SimpleData>
+				<SimpleData name="COORDINATO"> Lakshmi Bharathi 7358231623</SimpleData>
+				<SimpleData name="FINAL_CODE">NS22</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.078361</SimpleData>
+				<SimpleData name="LONGITUDE">80.269765</SimpleData>
+				<SimpleData name="NAME_OF_TH">Vizhiththezhu</SimpleData>
+				<SimpleData name="OBJECTID">18</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Alexpandian - SI 9629987460</SimpleData>
+				<SimpleData name="SL_N0">22</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men and Women</SimpleData>
+				<SimpleData name="WARD">62</SimpleData>
+				<SimpleData name="ZHO_SO">Vasudevan 9445190685</SimpleData>
+				<SimpleData name="ZONE">5</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.26976500000001,13.078361,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Teeds garden, Near Venus theatre Chembiyam,     Che-11</SimpleData>
+				<SimpleData name="COORDINATO">Giridharan 9003093525</SimpleData>
+				<SimpleData name="FINAL_CODE">NS23</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.08268</SimpleData>
+				<SimpleData name="LONGITUDE">80.270718</SimpleData>
+				<SimpleData name="NAME_OF_TH">Pioneer trade,</SimpleData>
+				<SimpleData name="OBJECTID">19</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Prasad Kumar – SI 9445025866</SimpleData>
+				<SimpleData name="SL_N0">23</SimpleData>
+				<SimpleData name="TYPE_SHELT">Elderly Men and Women</SimpleData>
+				<SimpleData name="WARD">68</SimpleData>
+				<SimpleData name="ZHO_SO">Sivagnanam (S.O)&apos;9444132493, 9445190686</SimpleData>
+				<SimpleData name="ZONE">6</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.270718,13.08268,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Corporation building, Jai beem nagar, Thiru Vi Ka nagar, Chennai-11</SimpleData>
+				<SimpleData name="COORDINATO">Muthukumar 8122033184</SimpleData>
+				<SimpleData name="FINAL_CODE">NS24</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">Adaikalam Trust,</SimpleData>
+				<SimpleData name="OBJECTID">20</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Prasad Kumar – SI 9445025866</SimpleData>
+				<SimpleData name="SL_N0">24</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">68</SimpleData>
+				<SimpleData name="ZHO_SO">Sivagnanam (S.O)&apos;9444132493, 9445190686</SimpleData>
+				<SimpleData name="ZONE">6</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Thatangulam, Temelous road, Pattalam, Che -12</SimpleData>
+				<SimpleData name="COORDINATO">Palani,9443500212</SimpleData>
+				<SimpleData name="FINAL_CODE">NS25</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.100144</SimpleData>
+				<SimpleData name="LONGITUDE">80.261511</SimpleData>
+				<SimpleData name="NAME_OF_TH">ICWO</SimpleData>
+				<SimpleData name="OBJECTID">21</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Thanga pandi - SI,9791204889</SimpleData>
+				<SimpleData name="SL_N0">25</SimpleData>
+				<SimpleData name="TYPE_SHELT">Elderly Men and Women</SimpleData>
+				<SimpleData name="WARD">77</SimpleData>
+				<SimpleData name="ZHO_SO">Thangaraj (SO),9445025885</SimpleData>
+				<SimpleData name="ZONE">6</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.261511,13.100144,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.149A,  Kannan Koil street, Pattravakkam, Chennai-98</SimpleData>
+				<SimpleData name="COORDINATO">Selvarani 9941428162</SimpleData>
+				<SimpleData name="FINAL_CODE">NS26</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.110217</SimpleData>
+				<SimpleData name="LONGITUDE">80.167605</SimpleData>
+				<SimpleData name="NAME_OF_TH">WORLD Trust,</SimpleData>
+				<SimpleData name="OBJECTID">22</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Muthu Krishnan - SI,9445025884</SimpleData>
+				<SimpleData name="SL_N0">26</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">84</SimpleData>
+				<SimpleData name="ZHO_SO">Sundar 9962828657</SimpleData>
+				<SimpleData name="ZONE">7</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.16760499999999,13.110217,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Bharathiyar street,VGN Shanthi nagar, Ti miller , Ambattur, Che-50</SimpleData>
+				<SimpleData name="COORDINATO">Arul Jeeva 9787481241</SimpleData>
+				<SimpleData name="FINAL_CODE">NS27</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.114317</SimpleData>
+				<SimpleData name="LONGITUDE">80.148055</SimpleData>
+				<SimpleData name="NAME_OF_TH">Integrated women development institute,</SimpleData>
+				<SimpleData name="OBJECTID">23</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Sakthivel - SI 9940673653</SimpleData>
+				<SimpleData name="SL_N0">27</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">86</SimpleData>
+				<SimpleData name="ZHO_SO">Sundar 9962828657</SimpleData>
+				<SimpleData name="ZONE">7</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.148055,13.114317,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Low Cost Health Care, No.1/91 A, Second Floor, Kalamegam Salai, Mogappair West, Chennai –37.</SimpleData>
+				<SimpleData name="COORDINATO">Manimekalai ,9884241754</SimpleData>
+				<SimpleData name="FINAL_CODE">NS28</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.080598</SimpleData>
+				<SimpleData name="LONGITUDE">80.168771</SimpleData>
+				<SimpleData name="NAME_OF_TH">ECOMWEL</SimpleData>
+				<SimpleData name="OBJECTID">24</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Manikandan -SI,8072680350</SimpleData>
+				<SimpleData name="SL_N0">28</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">91</SimpleData>
+				<SimpleData name="ZHO_SO">VijayaKumar 9884941920</SimpleData>
+				<SimpleData name="ZONE">7</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.16877100000001,13.080598,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Corporation School kellys, Chennai -10</SimpleData>
+				<SimpleData name="COORDINATO">Mohana Priya 9841627393</SimpleData>
+				<SimpleData name="FINAL_CODE">NS29</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.085338</SimpleData>
+				<SimpleData name="LONGITUDE">80.245371</SimpleData>
+				<SimpleData name="NAME_OF_TH">Surabi trust ,</SimpleData>
+				<SimpleData name="OBJECTID">25</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Karthick - SI 9884546562  7904025540</SimpleData>
+				<SimpleData name="SL_N0">29</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">103</SimpleData>
+				<SimpleData name="ZHO_SO"> Jayamurugan (SO)    9962526363</SimpleData>
+				<SimpleData name="ZONE">8</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.24537100000001,13.085338,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Chennai Primary School, Erulandi St., Amandakari, Chennai – 29</SimpleData>
+				<SimpleData name="COORDINATO">Merlin 9843785453</SimpleData>
+				<SimpleData name="FINAL_CODE">NS32</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.07056</SimpleData>
+				<SimpleData name="LONGITUDE">80.227949</SimpleData>
+				<SimpleData name="NAME_OF_TH">Hope Charitable Trust ,</SimpleData>
+				<SimpleData name="OBJECTID">26</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Ranjith –SI  9003831772  9445025906</SimpleData>
+				<SimpleData name="SL_N0">32</SimpleData>
+				<SimpleData name="TYPE_SHELT">Development-al disability (Boy Children)</SimpleData>
+				<SimpleData name="WARD">106</SimpleData>
+				<SimpleData name="ZHO_SO">Mr. Kovil  SO 9444340831</SimpleData>
+				<SimpleData name="ZONE">8</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.227949,13.07056,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Mc Nicholas Road, Dasspuram Junction, Chetpet, Chennai</SimpleData>
+				<SimpleData name="COORDINATO">Jayadevi,9940504561</SimpleData>
+				<SimpleData name="FINAL_CODE">NS33</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.074278</SimpleData>
+				<SimpleData name="LONGITUDE">80.242814</SimpleData>
+				<SimpleData name="NAME_OF_TH">SIP,</SimpleData>
+				<SimpleData name="OBJECTID">27</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Ranjith –SI  9003831772  9445025906</SimpleData>
+				<SimpleData name="SL_N0">33</SimpleData>
+				<SimpleData name="TYPE_SHELT">Transgender</SimpleData>
+				<SimpleData name="WARD">107</SimpleData>
+				<SimpleData name="ZHO_SO">Mr. Kovil  SO 9444340831</SimpleData>
+				<SimpleData name="ZONE">8</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.242814,13.074278,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.10, Kamdar Nagar,                   Chennai- 600003.</SimpleData>
+				<SimpleData name="COORDINATO">Aiswarya 9677222277</SimpleData>
+				<SimpleData name="FINAL_CODE">NS34</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.054783</SimpleData>
+				<SimpleData name="LONGITUDE">80.236112</SimpleData>
+				<SimpleData name="NAME_OF_TH">Dorcas Research Centre for Education, Art and Culture,</SimpleData>
+				<SimpleData name="OBJECTID">28</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Aravinth - SI 9445025910</SimpleData>
+				<SimpleData name="SL_N0">34</SimpleData>
+				<SimpleData name="TYPE_SHELT">Physically Challenged women</SimpleData>
+				<SimpleData name="WARD">110</SimpleData>
+				<SimpleData name="ZHO_SO">Ravindran  SO  9840555598</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.23611200000001,13.054783,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Chennai primary school,                        Lock nagar, Chennai</SimpleData>
+				<SimpleData name="COORDINATO">Narmada 9790615351</SimpleData>
+				<SimpleData name="FINAL_CODE">NS35</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.008473</SimpleData>
+				<SimpleData name="LONGITUDE">80.257536</SimpleData>
+				<SimpleData name="NAME_OF_TH">Glorious Gospel Mission Charitable Trust,</SimpleData>
+				<SimpleData name="OBJECTID">29</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Moses Prabakar-SI  9080306614</SimpleData>
+				<SimpleData name="SL_N0">35</SimpleData>
+				<SimpleData name="TYPE_SHELT">Girl Children</SimpleData>
+				<SimpleData name="WARD">114</SimpleData>
+				<SimpleData name="ZHO_SO">RamKumar (SO) 9445025916</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.257536,13.008473,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Corporation school,                       Old No.25,       New No 12, Subramania Garden, Thangavelu street, Triplicane, Chennai-600005</SimpleData>
+				<SimpleData name="COORDINATO">Jacqulin 9095308173</SimpleData>
+				<SimpleData name="FINAL_CODE">NS36</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.05722</SimpleData>
+				<SimpleData name="LONGITUDE">80.271683</SimpleData>
+				<SimpleData name="NAME_OF_TH">RVK</SimpleData>
+				<SimpleData name="OBJECTID">30</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Moses Prabakar-SI  9080306614</SimpleData>
+				<SimpleData name="SL_N0">36</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">115</SimpleData>
+				<SimpleData name="ZHO_SO">RamKumar (SO) 9445025916</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.271683,13.05722,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Pasumpon Muthuramalingam salai, Old chamiyars road, Teynampet,     Che-18</SimpleData>
+				<SimpleData name="COORDINATO">Pramathi 8270752543</SimpleData>
+				<SimpleData name="FINAL_CODE">NS37</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.041276</SimpleData>
+				<SimpleData name="LONGITUDE">80.251958</SimpleData>
+				<SimpleData name="NAME_OF_TH">Selvi memorial trust ,</SimpleData>
+				<SimpleData name="OBJECTID">31</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Prabu - SI 8144835661</SimpleData>
+				<SimpleData name="SL_N0">37</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">122</SimpleData>
+				<SimpleData name="ZHO_SO">Jayamurugan  (SO)   9962526363</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.251958,13.041276,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.1 Market street, Mandaveli, Ch-21</SimpleData>
+				<SimpleData name="COORDINATO">Vishanth 9884587575</SimpleData>
+				<SimpleData name="FINAL_CODE">NS38</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.027739</SimpleData>
+				<SimpleData name="LONGITUDE">80.260446</SimpleData>
+				<SimpleData name="NAME_OF_TH">Regina charitable trust  ,</SimpleData>
+				<SimpleData name="OBJECTID">32</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Karupusamy - SI 9095723274</SimpleData>
+				<SimpleData name="SL_N0">38</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">124</SimpleData>
+				<SimpleData name="ZHO_SO">Laxman – SO 8072321486</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.260446,13.027739,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.7, Dooming kuppam lane, Dooming kuppam ,Santhome, Che-04</SimpleData>
+				<SimpleData name="COORDINATO">Parsana Moideen 7358555655</SimpleData>
+				<SimpleData name="FINAL_CODE">NS39</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.029355</SimpleData>
+				<SimpleData name="LONGITUDE">80.278269</SimpleData>
+				<SimpleData name="NAME_OF_TH">Banyan,</SimpleData>
+				<SimpleData name="OBJECTID">33</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Karupusamy - SI 9095723274</SimpleData>
+				<SimpleData name="SL_N0">39</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men with psycho social need</SimpleData>
+				<SimpleData name="WARD">125</SimpleData>
+				<SimpleData name="ZHO_SO">Laxman – SO 8072321486</SimpleData>
+				<SimpleData name="ZONE">9</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.27826899999999,13.029355,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Ayappa Nagar Main Road,  Round Building, Koyambedu -107.</SimpleData>
+				<SimpleData name="COORDINATO">Symon Raja 9751975034</SimpleData>
+				<SimpleData name="FINAL_CODE">NS40</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.071579</SimpleData>
+				<SimpleData name="LONGITUDE">80.208268</SimpleData>
+				<SimpleData name="NAME_OF_TH">Loyola Shelter Home</SimpleData>
+				<SimpleData name="OBJECTID">34</SimpleData>
+				<SimpleData name="REGION">CENTRAL</SimpleData>
+				<SimpleData name="SI_MOBILE">Shankar – SI  9445025927 9942080484</SimpleData>
+				<SimpleData name="SL_N0">40</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">127</SimpleData>
+				<SimpleData name="ZHO_SO">Gopala Krishnan (SO) 9884886066</SimpleData>
+				<SimpleData name="ZONE">10</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.208268,13.071579,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.6, Ashtalakshmi Nagar, 23rd  street, Alapakkam, Chennai-116.</SimpleData>
+				<SimpleData name="COORDINATO">Amal  9841393283</SimpleData>
+				<SimpleData name="FINAL_CODE">NS41</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.036866</SimpleData>
+				<SimpleData name="LONGITUDE">80.176496</SimpleData>
+				<SimpleData name="NAME_OF_TH">Paadhai ,</SimpleData>
+				<SimpleData name="OBJECTID">35</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Palani Murugan - SI             9500040568</SimpleData>
+				<SimpleData name="SL_N0">41</SimpleData>
+				<SimpleData name="TYPE_SHELT">Boy Children</SimpleData>
+				<SimpleData name="WARD">147</SimpleData>
+				<SimpleData name="ZHO_SO">VijayaKumar 9884941920</SimpleData>
+				<SimpleData name="ZONE">11</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.176496,13.036866,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.81, 7th street, Anbu nagar, Valasaravakkam,  Chennai-600087</SimpleData>
+				<SimpleData name="COORDINATO">Gayathri 9655887221</SimpleData>
+				<SimpleData name="FINAL_CODE">NS42</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.061238</SimpleData>
+				<SimpleData name="LONGITUDE">80.163899</SimpleData>
+				<SimpleData name="NAME_OF_TH">Integrated women development institute ,</SimpleData>
+				<SimpleData name="OBJECTID">36</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Palani Murugan - SI             9500040568</SimpleData>
+				<SimpleData name="SL_N0">42</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">147</SimpleData>
+				<SimpleData name="ZHO_SO">VijayaKumar 9884941920</SimpleData>
+				<SimpleData name="ZONE">11</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.163899,13.061238,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Parthasarathy 1st street, Adambakkam, Chennai -88</SimpleData>
+				<SimpleData name="COORDINATO">Ragupathy 7395984433</SimpleData>
+				<SimpleData name="FINAL_CODE">NS43</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">12.987486</SimpleData>
+				<SimpleData name="LONGITUDE">80.204592</SimpleData>
+				<SimpleData name="NAME_OF_TH">Form Trust,</SimpleData>
+				<SimpleData name="OBJECTID">37</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Mrs. Revathy -            SI,9884696404</SimpleData>
+				<SimpleData name="SL_N0">43</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">163</SimpleData>
+				<SimpleData name="ZHO_SO">Venkatesan (S.O) 9445190692</SimpleData>
+				<SimpleData name="ZONE">12</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.20459200000001,12.987486,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">  No.1 Railway Border road, Appavu nagar, Near Amma Unavagam, Che-15</SimpleData>
+				<SimpleData name="COORDINATO">R.P.Raj,9688195557</SimpleData>
+				<SimpleData name="FINAL_CODE">NS44</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.02236</SimpleData>
+				<SimpleData name="LONGITUDE">80.219498</SimpleData>
+				<SimpleData name="NAME_OF_TH">Selvi Memorial Illam Society</SimpleData>
+				<SimpleData name="OBJECTID">38</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Ismayl Gani -         SI 9941812368</SimpleData>
+				<SimpleData name="SL_N0">44</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">171</SimpleData>
+				<SimpleData name="ZHO_SO">Ganesan (SO) 9940026757</SimpleData>
+				<SimpleData name="ZONE">13</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.219498,13.02236,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS"> Corporation School Damodharapuram, Besant Nagar, Chennai -20</SimpleData>
+				<SimpleData name="COORDINATO">Viktoriya, 8608268780</SimpleData>
+				<SimpleData name="FINAL_CODE">NS45</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.000242</SimpleData>
+				<SimpleData name="LONGITUDE">80.266837</SimpleData>
+				<SimpleData name="NAME_OF_TH">Montfort Siragugal,</SimpleData>
+				<SimpleData name="OBJECTID">39</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Swaminathan - SI 9445025976,</SimpleData>
+				<SimpleData name="SL_N0">45</SimpleData>
+				<SimpleData name="TYPE_SHELT">Girl Children</SimpleData>
+				<SimpleData name="WARD">176</SimpleData>
+				<SimpleData name="ZHO_SO">Sivakumar 8072612855</SimpleData>
+				<SimpleData name="ZONE">13</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.266837,13.000242,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Thiruveethi Amman Koil Street, Thiruvanmiyur, Chennai-01</SimpleData>
+				<SimpleData name="COORDINATO">Dhanasekar 8072944728</SimpleData>
+				<SimpleData name="FINAL_CODE">NS46</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">12.980814</SimpleData>
+				<SimpleData name="LONGITUDE">80.261034</SimpleData>
+				<SimpleData name="NAME_OF_TH">Montfort Siragugal</SimpleData>
+				<SimpleData name="OBJECTID">40</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Puzhalyenthi  - SI 9445025982</SimpleData>
+				<SimpleData name="SL_N0">46</SimpleData>
+				<SimpleData name="TYPE_SHELT">Boy Children</SimpleData>
+				<SimpleData name="WARD">182</SimpleData>
+				<SimpleData name="ZHO_SO">Sivakumar 8072612855</SimpleData>
+				<SimpleData name="ZONE">13</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.261034,12.980814,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Injambakkam,                  ECR Road,Chennai -115</SimpleData>
+				<SimpleData name="COORDINATO">Nagarajan,7092895521</SimpleData>
+				<SimpleData name="FINAL_CODE">NS47</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">12.916116</SimpleData>
+				<SimpleData name="LONGITUDE">80.250422</SimpleData>
+				<SimpleData name="NAME_OF_TH">Kannagi nagar podhunala sangam</SimpleData>
+				<SimpleData name="OBJECTID">41</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Mohana Priya -    SI                 8838036902</SimpleData>
+				<SimpleData name="SL_N0">47</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">196</SimpleData>
+				<SimpleData name="ZHO_SO">V.Murthy (S.O) 8608730123</SimpleData>
+				<SimpleData name="ZONE">15</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.250422,12.916116,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">Plot no.123,  J.Nagar, Panayur,      Chennai-119</SimpleData>
+				<SimpleData name="COORDINATO">Usha,9940617715</SimpleData>
+				<SimpleData name="FINAL_CODE">NS48</SimpleData>
+				<SimpleData name="GPS_POINT">NOT MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">12.962287</SimpleData>
+				<SimpleData name="LONGITUDE">80.254094</SimpleData>
+				<SimpleData name="NAME_OF_TH">Little Hearts</SimpleData>
+				<SimpleData name="OBJECTID">42</SimpleData>
+				<SimpleData name="REGION">SOUTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Kanagalakshmi  - SI   7299222690</SimpleData>
+				<SimpleData name="SL_N0">48</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">198</SimpleData>
+				<SimpleData name="ZHO_SO">V.Murthy (S.O) 8608730123</SimpleData>
+				<SimpleData name="ZONE">15</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.25409399999999,12.962287,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">NO.392, TH Road, Thiruvottiyur, Chennai.</SimpleData>
+				<SimpleData name="COORDINATO">Suganya 9095011731</SimpleData>
+				<SimpleData name="FINAL_CODE">NS02</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">13.121995</SimpleData>
+				<SimpleData name="LONGITUDE">80.285153</SimpleData>
+				<SimpleData name="NAME_OF_TH">Rehobath educational trust,</SimpleData>
+				<SimpleData name="OBJECTID">43</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Sathish - SI 9445025808</SimpleData>
+				<SimpleData name="SL_N0">2</SimpleData>
+				<SimpleData name="TYPE_SHELT">Women</SimpleData>
+				<SimpleData name="WARD">8</SimpleData>
+				<SimpleData name="ZHO_SO">Thiru. Sheik Meeran (S.O) 9445025801 9444090150</SimpleData>
+				<SimpleData name="ZONE">1</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.3043498,13.169011,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">R 55, No.106th street, 3rd Main road, Mathur, Manali, Ch -68</SimpleData>
+				<SimpleData name="COORDINATO">Antony 9659994637</SimpleData>
+				<SimpleData name="FINAL_CODE">NS03</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">ARM ,</SimpleData>
+				<SimpleData name="OBJECTID">44</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Balan- SI  9994603354</SimpleData>
+				<SimpleData name="SL_N0">3</SimpleData>
+				<SimpleData name="TYPE_SHELT">Men</SimpleData>
+				<SimpleData name="WARD">19</SimpleData>
+				<SimpleData name="ZHO_SO">Meenakshi Sundaram       (S.O) 9445190682</SimpleData>
+				<SimpleData name="ZONE">2</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2511871,13.17498,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#chennai_night_shelters_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_chennai_night_shelters_SSSSDDSISSISISI">
+				<SimpleData name="ADDRESS">No.64, Pope John’s Garden, K.K.Thazhai, Madhavaram, Chennai -51,</SimpleData>
+				<SimpleData name="COORDINATO">Preethi  8220157504</SimpleData>
+				<SimpleData name="FINAL_CODE">NS05</SimpleData>
+				<SimpleData name="GPS_POINT">MAPPED</SimpleData>
+				<SimpleData name="LATITUDE">0</SimpleData>
+				<SimpleData name="LONGITUDE">0</SimpleData>
+				<SimpleData name="NAME_OF_TH">Don Bosco Anbu Illam,</SimpleData>
+				<SimpleData name="OBJECTID">45</SimpleData>
+				<SimpleData name="REGION">NORTH</SimpleData>
+				<SimpleData name="SI_MOBILE">Kesavan  9543173714</SimpleData>
+				<SimpleData name="SL_N0">5</SimpleData>
+				<SimpleData name="TYPE_SHELT">Girl children</SimpleData>
+				<SimpleData name="WARD">28</SimpleData>
+				<SimpleData name="ZHO_SO">Jawhar George (SO)    9444464412</SimpleData>
+				<SimpleData name="ZONE">3</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>80.2548127,13.1494077,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
