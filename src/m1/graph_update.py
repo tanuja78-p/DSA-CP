@@ -106,29 +106,34 @@ def update_roads_from_flood_nodes(
     }
 
 
-def recover_roads(
-    graph: Graph,
-    road_ids: Iterable[str]
-) -> int:
+def recover_roads(graph: Graph, road_ids: Iterable[str]) -> int:
     """
-    Recover specified roads to SAFE status.
+    Recover the specified roads by setting their status to SAFE.
 
-    Returns the number of roads successfully recovered.
+    The graph stores each physical road in both directions.
+    We scan the adjacency list once and recover all requested
+    roads together.
     """
 
-    recovered = 0
+    road_ids = set(road_ids)
 
-    for road_id in road_ids:
+    if not road_ids:
+        return 0
 
-        if update_road_status(
-            graph,
-            road_id,
-            "SAFE"
-        ):
-            recovered += 1
+    recovered_roads = set()
 
-    return recovered
+    for node_id in graph.adjacency:
 
+        for edge in graph.adjacency[node_id]:
+
+            if edge.road_id in road_ids:
+
+                edge.status = "SAFE"
+                recovered_roads.add(
+                    edge.road_id
+                )
+
+    return len(recovered_roads)
 
 def count_road_statuses(
     graph: Graph

@@ -1,172 +1,328 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
-
+# Allow imports from src/
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
 SRC_PATH = PROJECT_ROOT / "src"
 
-sys.path.insert(
-    0,
-    str(SRC_PATH)
+if str(SRC_PATH) not in sys.path:
+    sys.path.insert(0, str(SRC_PATH))
+
+
+from m1.build_road_graph import build_chennai_graph
+from m1.flood_loader import load_flood_kml
+from m1.flood_engine import (
+    FloodHazard,
+    SpatialIndex,
+    apply_flood_hazards
 )
-
-
-from m1.graph import Graph
-
 from m1.graph_update import (
-    update_roads_from_flood_nodes,
-    count_road_statuses,
-    recover_roads
+    recover_roads,
+    count_road_statuses
 )
 
 
-def build_test_graph():
+FLOOD_KML = (
+    PROJECT_ROOT
+    / "data"
+    / "Chennai Inundation Points with Depth of Inundation.kml"
+)
 
-    graph = Graph()
 
-    graph.add_node(
-        "NODE_A",
-        13.0000,
-        80.2000
-    )
+def prepare_flood_hazards(records):
 
-    graph.add_node(
-        "NODE_B",
-        13.0010,
-        80.2010
-    )
+    hazards = []
 
-    graph.add_node(
-        "NODE_C",
-        13.0020,
-        80.2020
-    )
+    for index, record in enumerate(
+        records,
+        start=1
+    ):
 
-    graph.add_node(
-        "NODE_D",
-        13.0030,
-        80.2030
-    )
+        attributes = record.get(
+            "attributes",
+            {}
+        )
 
-    graph.add_edge(
-        source="NODE_A",
-        destination="NODE_B",
-        road_id="ROAD_001",
-        distance=100
-    )
+        coordinates = record.get(
+            "coordinates",
+            []
+        )
 
-    graph.add_edge(
-        source="NODE_B",
-        destination="NODE_C",
-        road_id="ROAD_002",
-        distance=150
-    )
+        latitude = attributes.get(
+            "F_LATITUDE"
+        )
 
-    graph.add_edge(
-        source="NODE_C",
-        destination="NODE_D",
-        road_id="ROAD_003",
-        distance=200
-    )
+        longitude = attributes.get(
+            "F_LONGITUDE"
+        )
 
-    return graph
+        depth = attributes.get(
+            "DEPTH"
+        )
+
+        if (
+            latitude is None
+            or longitude is None
+        ):
+
+            if not coordinates:
+                continue
+
+            longitude = coordinates[0][0]
+            latitude = coordinates[0][1]
+
+        try:
+
+            latitude = float(latitude)
+            longitude = float(longitude)
+
+        except (
+            TypeError,
+            ValueError
+        ):
+
+            continue
+
+        try:
+
+            depth = float(depth)
+
+        except (
+            TypeError,
+            ValueError
+        ):
+
+            depth = 0.0
+
+        if depth >= 5:
+
+            severity = "CRITICAL"
+
+        elif depth >= 3:
+
+            severity = "HIGH"
+
+        elif depth >= 1:
+
+            severity = "MODERATE"
+
+        else:
+
+            severity = "LOW"
+
+        hazards.append(
+            FloodHazard(
+                hazard_id=f"FLOOD_{index:03d}",
+                latitude=latitude,
+                longitude=longitude,
+                severity=severity,
+                depth=depth,
+                source=(
+                    "Chennai Inundation Points "
+                    "with Depth of Inundation"
+                )
+            )
+        )
+
+    return hazards
 
 
 def main():
 
     print()
     print("==========================================")
-    print(" M1 - DYNAMIC GRAPH UPDATE TEST")
+    print(" M1 - FLOOD RECOVERY TEST")
     print("==========================================")
     print()
 
-    graph = build_test_graph()
-
-    print("Initial road status:")
+    # -------------------------------------------------
+    # 1. Build real Chennai graph
+    # -------------------------------------------------
 
     print(
-        count_road_statuses(graph)
+        "Building real Chennai road graph..."
     )
+
+    graph = build_chennai_graph()
 
     print()
-
     print(
-        "Applying flood impact to NODE_B..."
-    )
-
-    result = update_roads_from_flood_nodes(
-        graph,
-        ["NODE_B"],
-        status="BLOCKED"
+        "Graph nodes:",
+        graph.get_node_count()
     )
 
     print(
-        f"Nodes processed : {result['nodes_processed']}"
+        "Graph edges:",
+        graph.get_edge_count()
     )
 
-    print(
-        f"Roads updated   : {result['roads_updated']}"
-    )
+    # -------------------------------------------------
+    # 2. Check initial state
+    # -------------------------------------------------
 
-    print()
-
-    print("Road status after flood:")
-
-    after_flood = count_road_statuses(
+    initial_status = count_road_statuses(
         graph
     )
 
-    print(after_flood)
-
     print()
-
-    assert after_flood["BLOCKED"] == 2
-
-    assert after_flood["SAFE"] == 1
+    print(
+        "Road status before flood:"
+    )
 
     print(
-        "Flood road update verified."
+        initial_status
+    )
+
+    assert initial_status["BLOCKED"] == 0, (
+        "Graph should initially have no blocked roads."
+    )
+
+    # -------------------------------------------------
+    # 3. Load real flood data
+    # -------------------------------------------------
+
+    print()
+    print(
+        "Loading real Chennai flood data..."
+    )
+
+    records = load_flood_kml(
+        str(FLOOD_KML)
+    )
+
+    hazards = prepare_flood_hazards(
+        records
+    )
+
+    print(
+        "Flood hazards:",
+        len(hazards)
+    )
+
+    # -------------------------------------------------
+    # 4. Build spatial index
+    # -------------------------------------------------
+
+    print()
+    print(
+        "Building flood spatial index..."
+    )
+
+    spatial_index = SpatialIndex(
+        cell_size=0.001
+    )
+
+    for node_id, node in graph.nodes.items():
+
+        spatial_index.add_node(
+            node
+        )
+
+    # -------------------------------------------------
+    # 5. Apply flood
+    # -------------------------------------------------
+
+    print()
+    print(
+        "Applying flood impact..."
+    )
+
+    result = apply_flood_hazards(
+        graph,
+        spatial_index,
+        hazards
+    )
+
+    blocked_roads = set(
+        result["BLOCKED"]
+    )
+
+    restricted_roads = set(
+        result["RESTRICTED"]
+    )
+
+    print(
+        "Blocked roads:",
+        len(blocked_roads)
+    )
+
+    print(
+        "Restricted roads:",
+        len(restricted_roads)
+    )
+
+    flood_status = count_road_statuses(
+        graph
     )
 
     print()
+    print(
+        "Road status after flood:"
+    )
 
     print(
-        "Recovering affected roads..."
+        flood_status
+    )
+
+    assert flood_status["BLOCKED"] > 0, (
+        "Flood should block at least one road."
+    )
+
+    # -------------------------------------------------
+    # 6. Recover blocked roads
+    # -------------------------------------------------
+
+    print()
+    print(
+        "Recovering flood-affected roads..."
     )
 
     recovered = recover_roads(
         graph,
-        [
-            "ROAD_001",
-            "ROAD_002"
-        ]
+        blocked_roads
     )
 
     print(
-        f"Roads recovered: {recovered}"
+        "Roads recovered:",
+        recovered
     )
 
-    print()
+    # -------------------------------------------------
+    # 7. Verify recovery
+    # -------------------------------------------------
 
-    after_recovery = count_road_statuses(
+    recovered_status = count_road_statuses(
         graph
     )
 
+    print()
     print(
         "Road status after recovery:"
     )
 
-    print(after_recovery)
+    print(
+        recovered_status
+    )
 
-    assert after_recovery["SAFE"] == 3
+    assert recovered == len(
+        blocked_roads
+    ), (
+        "Not all blocked roads were recovered."
+    )
 
-    assert after_recovery["BLOCKED"] == 0
+    assert recovered_status["BLOCKED"] == 0, (
+        "Blocked roads should be zero after recovery."
+    )
+
+    assert recovered_status["SAFE"] == (
+        initial_status["SAFE"]
+    ), (
+        "All recovered roads should return to SAFE."
+    )
 
     print()
-
     print("==========================================")
-    print(" DYNAMIC GRAPH UPDATE TEST PASSED")
+    print(" FLOOD RECOVERY TEST PASSED")
     print("==========================================")
     print()
 
