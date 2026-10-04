@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        M1 - Urban Flood Monitoring
+    </title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- M1 stylesheet -->
+    <link
+        rel="stylesheet"
+        href="/m1/static/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>
+                A Dynamic Graph-Based Framework for
+                Emergency Evacuation and Disaster Decision Support
+            </h1>
+
+            <p>
+                M1 — Dynamic Road Graph + Urban Flood
+            </p>
+
+        </div>
+
+        <button
+            id="refreshButton"
+            onclick="loadDashboard()"
+        >
+            Refresh Data
+        </button>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <!-- Statistics -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <span class="stat-title">
+                    Graph Nodes
+                </span>
+
+                <strong id="nodeCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-title">
+                    Physical Roads
+                </span>
+
+                <strong id="roadCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card safe">
+
+                <span class="stat-title">
+                    Safe Roads
+                </span>
+
+                <strong id="safeCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card blocked">
+
+                <span class="stat-title">
+                    Blocked Roads
+                </span>
+
+                <strong id="blockedCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card restricted">
+
+                <span class="stat-title">
+                    Restricted Roads
+                </span>
+
+                <strong id="restrictedCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card flood">
+
+                <span class="stat-title">
+                    Flood Hazards
+                </span>
+
+                <strong id="floodCount">
+                    --
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main map -->
+
+        <section class="map-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Chennai Urban Flood Map
+                    </h2>
+
+                    <p>
+                        Real Chennai road graph and
+                        flood hazard observations
+                    </p>
+
+                </div>
+
+                <span id="statusMessage">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div id="map"></div>
+
+
+            <div class="legend">
+
+                <div>
+                    <span class="legend-box safe-box"></span>
+                    Safe
+                </div>
+
+                <div>
+                    <span class="legend-box restricted-box"></span>
+                    Restricted
+                </div>
+
+                <div>
+                    <span class="legend-box blocked-box"></span>
+                    Blocked
+                </div>
+
+                <div>
+                    <span class="legend-dot"></span>
+                    Flood Hazard
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Flood summary -->
+
+        <section class="information-grid">
+
+            <div class="info-card">
+
+                <h2>
+                    Flood Severity
+                </h2>
+
+                <div id="severityContainer">
+
+                    <p>
+                        Loading...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h2>
+                    M1 Module
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Dynamic Road Graph
+                    </li>
+
+                    <li>
+                        Adjacency List
+                    </li>
+
+                    <li>
+                        Custom HashMap
+                    </li>
+
+                    <li>
+                        BFS Reachability
+                    </li>
+
+                    <li>
+                        Urban Flood Engine
+                    </li>
+
+                    <li>
+                        Dynamic Road Status Updates
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            M1 — Dynamic Road Graph + Urban Flood
+        </p>
+
+        <p>
+            Data-driven DSA backend with Leaflet visualization
+        </p>
+
+    </footer>
+
+
+    <!-- Leaflet JS -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- M1 application -->
+
+    <script src="/m1/static/app.js"></script>
+
+</body>
+
+</html>

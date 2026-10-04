@@ -1,7 +1,8 @@
 from pathlib import Path
 import csv
-
+from fastapi.responses import FileResponse
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 
 
 # -------------------------------------------------
@@ -14,6 +15,12 @@ PROCESSED_DATA = (
     PROJECT_ROOT
     / "data"
     / "processed"
+)
+
+FRONTEND_DIRECTORY = (
+    PROJECT_ROOT
+    / "frontend"
+    / "m1"
 )
 
 ROAD_NODES_FILE = (
@@ -62,6 +69,7 @@ app = FastAPI(
 def read_csv_file(filename: Path):
 
     if not filename.exists():
+
         raise FileNotFoundError(
             f"Required file not found: {filename}"
         )
@@ -98,6 +106,7 @@ def get_road_status_counts():
         ).upper()
 
         if status in counts:
+
             counts[status] += 1
 
     return counts
@@ -124,6 +133,39 @@ def root():
     }
 
 
+# -------------------------------------------------
+# Frontend
+# -------------------------------------------------
+
+if FRONTEND_DIRECTORY.exists():
+
+    app.mount(
+        "/m1/static",
+        StaticFiles(
+            directory=str(
+                FRONTEND_DIRECTORY
+            )
+        ),
+        name="m1-static"
+    )
+
+# -------------------------------------------------
+# M1 frontend
+# -------------------------------------------------
+
+@app.get("/m1/")
+def m1_frontend():
+
+    index_file = FRONTEND_DIRECTORY / "index.html"
+
+    if not index_file.exists():
+
+        raise HTTPException(
+            status_code=404,
+            detail="M1 frontend not found."
+        )
+
+    return FileResponse(index_file)
 # -------------------------------------------------
 # Graph summary
 # -------------------------------------------------
@@ -159,6 +201,7 @@ def graph_summary():
             ).upper()
 
             if status in status_counts:
+
                 status_counts[status] += 1
 
         return {
