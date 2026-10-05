@@ -1,0 +1,6820 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+    <meta
+
+
+
+        name="viewport"
+
+
+
+        content="width=device-width, initial-scale=1.0"
+
+
+
+    >
+
+
+
+
+
+
+
+    <title>
+
+
+
+        Chennai Adaptive Evacuation Routing
+
+
+
+    </title>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+
+
+
+         LEAFLET
+
+
+
+         ===================================================== -->
+
+
+
+
+
+
+
+    <link
+
+
+
+        rel="stylesheet"
+
+
+
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+
+
+
+    >
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           GLOBAL
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        * {
+
+
+
+            box-sizing: border-box;
+
+
+
+            margin: 0;
+
+
+
+            padding: 0;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        body {
+
+
+
+
+
+
+
+            font-family:
+
+
+
+                Arial,
+
+
+
+                Helvetica,
+
+
+
+                sans-serif;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            color:
+
+
+
+                #e2e8f0;
+
+
+
+
+
+
+
+            min-height:
+
+
+
+                100vh;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           HEADER
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .header {
+
+
+
+
+
+
+
+            padding:
+
+
+
+                18px 28px;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #111827;
+
+
+
+
+
+
+
+            border-bottom:
+
+
+
+                1px solid #334155;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .header h1 {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                25px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                5px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .header p {
+
+
+
+
+
+
+
+            color:
+
+
+
+                #94a3b8;
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                13px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           MAIN
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .container {
+
+
+
+
+
+
+
+            padding:
+
+
+
+                24px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           ROUTE CONFIGURATION
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .control-panel {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #1e293b;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                12px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                20px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                20px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .control-panel h2 {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                18px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                14px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .controls {
+
+
+
+
+
+
+
+            display:
+
+
+
+                grid;
+
+
+
+
+
+
+
+            grid-template-columns:
+
+
+
+                1fr 1fr 190px 145px 175px 170px 175px;
+
+
+
+
+
+
+
+            gap:
+
+
+
+                10px;
+
+
+
+
+
+
+
+            align-items:
+
+
+
+                center;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        input,
+
+
+
+        select,
+
+
+
+        button {
+
+
+
+
+
+
+
+            height:
+
+
+
+                44px;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                8px;
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                14px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        input,
+
+
+
+        select {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            color:
+
+
+
+                #e2e8f0;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #475569;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                0 12px;
+
+
+
+
+
+
+
+            outline:
+
+
+
+                none;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        input:focus,
+
+
+
+        select:focus {
+
+
+
+
+
+
+
+            border-color:
+
+
+
+                #60a5fa;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        button {
+
+
+
+
+
+
+
+            border:
+
+
+
+                none;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                0 14px;
+
+
+
+
+
+
+
+            color:
+
+
+
+                white;
+
+
+
+
+
+
+
+            font-weight:
+
+
+
+                bold;
+
+
+
+
+
+
+
+            cursor:
+
+
+
+                pointer;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #2563eb;
+
+
+
+
+
+
+
+            transition:
+
+
+
+                0.2s;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        button:hover {
+
+
+
+
+
+
+
+            filter:
+
+
+
+                brightness(1.1);
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           FLOOD
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .flood-button {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0891b2;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           CYCLONE
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .cyclone-button {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #7c3aed;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           RESET
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .reset-button {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #475569;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .reset-button:hover {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #64748b;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           DASHBOARD
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .dashboard {
+
+
+
+
+
+
+
+            display:
+
+
+
+                grid;
+
+
+
+
+
+
+
+            grid-template-columns:
+
+
+
+                2fr 1fr;
+
+
+
+
+
+
+
+            gap:
+
+
+
+                20px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .map-panel,
+
+
+
+        .analysis-panel {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #1e293b;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                12px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                20px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .panel-title {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                18px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                14px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           MAP
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        #map {
+
+
+
+
+
+
+
+            width:
+
+
+
+                100%;
+
+
+
+
+
+
+
+            height:
+
+
+
+                550px;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #475569;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                10px;
+
+
+
+
+
+
+
+            overflow:
+
+
+
+                hidden;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           METRICS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .metric {
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                8px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                13px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                9px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .metric-label {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                11px;
+
+
+
+
+
+
+
+            color:
+
+
+
+                #94a3b8;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                5px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .metric-value {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                20px;
+
+
+
+
+
+
+
+            font-weight:
+
+
+
+                bold;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           STATUS COLORS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .safe {
+
+
+
+
+
+
+
+            color:
+
+
+
+                #22c55e;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .warning {
+
+
+
+
+
+
+
+            color:
+
+
+
+                #f59e0b;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .danger {
+
+
+
+
+
+
+
+            color:
+
+
+
+                #ef4444;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           HAZARDS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .hazard-section {
+
+
+
+
+
+
+
+            margin-top:
+
+
+
+                18px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .hazard {
+
+
+
+
+
+
+
+            display:
+
+
+
+                flex;
+
+
+
+
+
+
+
+            justify-content:
+
+
+
+                space-between;
+
+
+
+
+
+
+
+            align-items:
+
+
+
+                center;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                8px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                12px;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                8px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .status {
+
+
+
+
+
+
+
+            font-weight:
+
+
+
+                bold;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           ROUTE INFORMATION
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .route-info {
+
+
+
+
+
+
+
+            margin-top:
+
+
+
+                18px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                13px;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                8px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .route-info-title {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                11px;
+
+
+
+
+
+
+
+            color:
+
+
+
+                #94a3b8;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                7px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .route-info-value {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                12px;
+
+
+
+
+
+
+
+            line-height:
+
+
+
+                1.5;
+
+
+
+
+
+
+
+            word-break:
+
+
+
+                break-word;
+
+
+
+
+
+
+
+            max-height:
+
+
+
+                110px;
+
+
+
+
+
+
+
+            overflow-y:
+
+
+
+                auto;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           SIMULATION STATUS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        .simulation-status {
+
+
+
+
+
+
+
+            margin-top:
+
+
+
+                15px;
+
+
+
+
+
+
+
+            padding:
+
+
+
+                13px;
+
+
+
+
+
+
+
+            background:
+
+
+
+                #0f172a;
+
+
+
+
+
+
+
+            border:
+
+
+
+                1px solid #334155;
+
+
+
+
+
+
+
+            border-radius:
+
+
+
+                8px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .simulation-title {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                11px;
+
+
+
+
+
+
+
+            color:
+
+
+
+                #94a3b8;
+
+
+
+
+
+
+
+            margin-bottom:
+
+
+
+                6px;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        #simulation-message {
+
+
+
+
+
+
+
+            font-size:
+
+
+
+                14px;
+
+
+
+
+
+
+
+            font-weight:
+
+
+
+                bold;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           RESPONSIVE
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        @media (max-width: 1450px) {
+
+
+
+
+
+
+
+            .controls {
+
+
+
+
+
+
+
+                grid-template-columns:
+
+
+
+                    1fr 1fr 180px 140px 165px 160px 165px;
+
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        @media (max-width: 1200px) {
+
+
+
+
+
+
+
+            .controls {
+
+
+
+
+
+
+
+                grid-template-columns:
+
+
+
+                    1fr 1fr 1fr;
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            .dashboard {
+
+
+
+
+
+
+
+                grid-template-columns:
+
+
+
+                    1fr;
+
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        @media (max-width: 700px) {
+
+
+
+
+
+
+
+            .container {
+
+
+
+
+
+
+
+                padding:
+
+
+
+                    12px;
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            .controls {
+
+
+
+
+
+
+
+                grid-template-columns:
+
+
+
+                    1fr;
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            #map {
+
+
+
+
+
+
+
+                height:
+
+
+
+                    450px;
+
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+
+            margin-top: 10px;
+
+        }
+
+
+
+        .info-card {
+
+            background: #0f172a;
+
+            border: 1px solid #334155;
+
+            border-radius: 8px;
+
+            padding: 10px;
+
+        }
+
+
+
+        .info-card-label {
+
+            font-size: 10px;
+
+            color: #94a3b8;
+
+            margin-bottom: 4px;
+
+        }
+
+
+
+        .info-card-value {
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .comparison-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 10px;
+
+            font-size: 12px;
+
+        }
+
+
+
+        .comparison-table th,
+
+        .comparison-table td {
+
+            border: 1px solid #334155;
+
+            padding: 8px;
+
+            text-align: center;
+
+        }
+
+
+
+        .comparison-table th {
+
+            color: #94a3b8;
+
+            font-weight: normal;
+
+        }
+
+
+
+        .comparison-highlight {
+
+            color: #22c55e;
+
+            font-weight: bold;
+
+        }
+
+
+
+        @media (max-width: 700px) {
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+
+</style>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+
+
+
+         HEADER
+
+
+
+         ===================================================== -->
+
+
+
+
+
+
+
+    <header class="header">
+
+
+
+
+
+
+
+        <h1>
+
+
+
+            Chennai Adaptive Evacuation Routing
+
+
+
+        </h1>
+
+
+
+
+
+
+
+        <p>
+
+
+
+            Member 2 — A* Routing, Dynamic Rerouting & Multi-Hazard Response
+
+
+
+        </p>
+
+
+
+
+
+
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+
+
+
+         MAIN
+
+
+
+         ===================================================== -->
+
+
+
+
+
+
+
+    <main class="container">
+
+
+
+
+
+
+
+
+
+
+
+        <!-- =================================================
+
+
+
+             ROUTE CONFIGURATION
+
+
+
+             ================================================= -->
+
+
+
+
+
+
+
+        <section class="control-panel">
+
+
+
+
+
+
+
+            <h2>
+
+
+
+                Route Configuration
+
+
+
+            </h2>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="controls">
+
+
+
+
+
+
+
+
+
+
+
+                <!-- SOURCE -->
+
+
+
+
+
+
+
+                <input
+
+
+
+                    id="source"
+
+
+
+                    type="text"
+
+
+
+                    placeholder="Source Node"
+
+
+
+                    value="80.29048_13.09242"
+
+
+
+                >
+
+
+
+
+
+
+
+
+
+
+
+                <!-- DESTINATION -->
+
+
+
+
+
+
+
+                <input
+
+
+
+                    id="destination"
+
+
+
+                    type="text"
+
+
+
+                    placeholder="Destination Node"
+
+
+
+                    value="80.29114_13.09609"
+
+
+
+                >
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ALGORITHM -->
+
+
+
+
+
+
+
+                <select id="algorithm">
+
+
+
+
+
+
+
+                    <option value="astar">
+
+
+
+                        A* — Primary
+
+
+
+                    </option>
+
+
+
+
+
+
+
+                    <option value="dijkstra">
+
+
+
+                        Dijkstra — Baseline
+
+
+
+                    </option>
+
+
+
+
+
+
+
+                    <option value="hazard">
+
+
+
+                        Hazard-Aware A*
+
+
+
+                    </option>
+
+
+
+
+
+
+
+                </select>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- FIND ROUTE -->
+
+
+
+
+
+
+
+                <button
+
+
+
+                    onclick="findRoute()"
+
+
+
+                >
+
+
+
+                    FIND ROUTE
+
+
+
+                </button>
+
+
+
+                <button
+
+
+
+                    onclick="compareAlgorithms()"
+
+
+
+                >
+
+
+
+                    COMPARE A* / DIJKSTRA
+
+
+
+                </button>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- FLOOD -->
+
+
+
+
+
+
+
+                <button
+
+
+
+                    class="flood-button"
+
+
+
+                    onclick="simulateFlood()"
+
+
+
+                >
+
+
+
+                    🌊 SIMULATE FLOOD
+
+
+
+                </button>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- CYCLONE -->
+
+
+
+
+
+
+
+                <button
+
+
+
+                    class="cyclone-button"
+
+
+
+                    onclick="simulateCyclone()"
+
+
+
+                >
+
+
+
+                    🌀 APPLY VARDAH
+
+
+
+                </button>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- RESET -->
+
+
+
+
+
+
+
+                <button
+
+
+
+                    class="reset-button"
+
+
+
+                    onclick="clearHazards()"
+
+
+
+                >
+
+
+
+                    🧹 CLEAR HAZARDS
+
+
+
+                </button>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- =================================================
+
+
+
+             DASHBOARD
+
+
+
+             ================================================= -->
+
+
+
+
+
+
+
+        <section class="dashboard">
+
+
+
+
+
+
+
+
+
+
+
+            <!-- =================================================
+
+
+
+                 MAP
+
+
+
+                 ================================================= -->
+
+
+
+
+
+
+
+            <div class="map-panel">
+
+
+
+
+
+
+
+                <h2 class="panel-title">
+
+
+
+                    Chennai Road Network
+
+
+
+                </h2>
+
+
+
+
+
+
+
+                <div id="map"></div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- =================================================
+
+
+
+                 ANALYSIS
+
+
+
+                 ================================================= -->
+
+
+
+
+
+
+
+            <div class="analysis-panel">
+
+
+
+
+
+
+
+                <h2 class="panel-title">
+
+
+
+                    Route Analysis
+
+
+
+                </h2>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ROUTE STATUS -->
+
+
+
+
+
+
+
+                <div class="metric">
+
+
+
+
+
+
+
+                    <div class="metric-label">
+
+
+
+                        ROUTE STATUS
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="route-status"
+
+
+
+                        class="metric-value"
+
+
+
+                    >
+
+
+
+                        —
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ALGORITHM -->
+
+
+
+
+
+
+
+                <div class="metric">
+
+
+
+
+
+
+
+                    <div class="metric-label">
+
+
+
+                        ALGORITHM
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="route-algorithm"
+
+
+
+                        class="metric-value"
+
+
+
+                    >
+
+
+
+                        —
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- DISTANCE -->
+
+
+
+
+
+
+
+                <div class="metric">
+
+
+
+
+
+
+
+                    <div class="metric-label">
+
+
+
+                        DISTANCE
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="route-distance"
+
+
+
+                        class="metric-value"
+
+
+
+                    >
+
+
+
+                        —
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- NODES EXPLORED -->
+
+
+
+
+
+
+
+                <div class="metric">
+
+
+
+
+
+
+
+                    <div class="metric-label">
+
+
+
+                        NODES EXPLORED
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="nodes-explored"
+
+
+
+                        class="metric-value"
+
+
+
+                    >
+
+
+
+                        —
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ROUTE NODES -->
+
+
+
+
+
+
+
+                <div class="metric">
+
+
+
+
+
+
+
+                    <div class="metric-label">
+
+
+
+                        ROUTE NODES
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="route-node-count"
+
+
+
+                        class="metric-value"
+
+
+
+                    >
+
+
+
+                        —
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- =================================================
+
+
+
+                     ACTIVE HAZARDS
+
+
+
+                     ================================================= -->
+
+
+
+
+
+
+
+                <div class="hazard-section">
+
+
+
+
+
+
+
+                    <h2 class="panel-title">
+
+
+
+                        Active Hazards
+
+
+
+                    </h2>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="hazard">
+
+
+
+
+
+
+
+                        <span>
+
+
+
+                            Flood
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                        <span
+
+
+
+                            id="flood-status"
+
+
+
+                            class="status safe"
+
+
+
+                        >
+
+
+
+                            SAFE
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="hazard">
+
+
+
+
+
+
+
+                        <span>
+
+
+
+                            Cyclone
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                        <span
+
+
+
+                            id="cyclone-status"
+
+
+
+                            class="status safe"
+
+
+
+                        >
+
+
+
+                            SAFE
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="hazard">
+
+
+
+
+
+
+
+                        <span>
+
+
+
+                            Network
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                        <span
+
+
+
+                            id="network-status"
+
+
+
+                            class="status safe"
+
+
+
+                        >
+
+
+
+                            OPERATIONAL
+
+
+
+                        </span>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                                <!-- =================================================
+
+                     CYCLONE INTELLIGENCE
+
+                     ================================================= -->
+
+
+
+                <div class="hazard-section">
+
+
+
+                    <h2 class="panel-title">
+
+                        Cyclone Intelligence
+
+                    </h2>
+
+
+
+                    <div class="info-grid">
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">CYCLONE</div>
+
+                            <div id="cyclone-name" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">TRACK POINT</div>
+
+                            <div id="cyclone-track" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">WIND SPEED</div>
+
+                            <div id="cyclone-wind" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">PRESSURE</div>
+
+                            <div id="cyclone-pressure" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">SEVERITY</div>
+
+                            <div id="cyclone-severity" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">AFFECTED NODES</div>
+
+                            <div id="cyclone-nodes" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">AFFECTED ROADS</div>
+
+                            <div id="cyclone-roads" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                        <div class="info-card">
+
+                            <div class="info-card-label">IMPACT RADIUS</div>
+
+                            <div id="cyclone-radius" class="info-card-value">—</div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- =================================================
+
+                     A* VS DIJKSTRA
+
+                     ================================================= -->
+
+
+
+                <div class="hazard-section">
+
+
+
+                    <h2 class="panel-title">
+
+                        A* vs Dijkstra
+
+                    </h2>
+
+
+
+                    <div class="route-info">
+
+
+
+                        <div id="comparison-status" class="route-info-value">
+
+                            Run comparison to validate both algorithms.
+
+                        </div>
+
+
+
+                        <table class="comparison-table">
+
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Metric</th>
+
+                                    <th>A*</th>
+
+                                    <th>Dijkstra</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody>
+
+
+
+                                <tr>
+
+                                    <td>Distance</td>
+
+                                    <td id="compare-astar-distance">—</td>
+
+                                    <td id="compare-dijkstra-distance">—</td>
+
+                                </tr>
+
+
+
+                                <tr>
+
+                                    <td>Route Nodes</td>
+
+                                    <td id="compare-astar-route">—</td>
+
+                                    <td id="compare-dijkstra-route">—</td>
+
+                                </tr>
+
+
+
+                                <tr>
+
+                                    <td>Nodes Explored</td>
+
+                                    <td id="compare-astar-explored">—</td>
+
+                                    <td id="compare-dijkstra-explored">—</td>
+
+                                </tr>
+
+
+
+                            </tbody>
+
+
+
+                        </table>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+<!-- =================================================
+
+
+
+                     ROUTE PATH
+
+
+
+                     ================================================= -->
+
+
+
+
+
+
+
+                <div class="route-info">
+
+
+
+
+
+
+
+                    <div class="route-info-title">
+
+
+
+                        ROUTE PATH
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="route-info-value"
+
+
+
+                        class="route-info-value"
+
+
+
+                    >
+
+
+
+                        No route calculated yet.
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- =================================================
+
+
+
+                     SIMULATION STATUS
+
+
+
+                     ================================================= -->
+
+
+
+
+
+
+
+                <div class="simulation-status">
+
+
+
+
+
+
+
+                    <div class="simulation-title">
+
+
+
+                        SIMULATION STATUS
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div
+
+
+
+                        id="simulation-message"
+
+
+
+                    >
+
+
+
+                        Normal conditions
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+
+
+
+         LEAFLET JAVASCRIPT
+
+
+
+         ===================================================== -->
+
+
+
+
+
+
+
+    <script
+
+
+
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           API
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        const API_BASE =
+
+
+
+            "http://127.0.0.1:8001";
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           TEST ROAD
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        const FLOOD_TEST_ROAD =
+
+
+
+            "10529";
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           REAL VARDAH
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        const VARDAH_TRACK_POINT =
+
+
+
+            "TP0160";
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           CYCLONE RADIUS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        const CYCLONE_RADIUS_METERS =
+
+
+
+            1000;
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           MAP
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        const map =
+
+
+
+            L.map("map").setView(
+
+
+
+                [13.0827, 80.2707],
+
+
+
+                12
+
+
+
+            );
+
+
+
+
+
+
+
+
+
+
+
+        L.tileLayer(
+
+
+
+
+
+
+
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+
+
+
+
+
+
+            {
+
+
+
+
+
+
+
+                maxZoom:
+
+
+
+                    19,
+
+
+
+
+
+
+
+                attribution:
+
+
+
+                    "&copy; OpenStreetMap contributors"
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+        ).addTo(map);
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           MAP OBJECTS
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        let routeLayer =
+
+
+
+            null;
+
+
+
+
+
+        let alternateRouteLayer =
+
+
+
+            null;
+
+
+
+
+
+        let hazardRoadLayer =
+
+
+
+            null;
+
+
+
+
+
+        let hazardAnimationLayer =
+
+
+
+            null;
+
+
+
+
+
+        let hazardAnimationTimer =
+
+
+
+            null;
+
+
+
+
+
+
+
+        let sourceMarker =
+
+
+
+            null;
+
+
+
+
+
+
+
+        let destinationMarker =
+
+
+
+            null;
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           CLEAR MAP
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        function clearMapRoute() {
+    if (hazardAnimationTimer !== null) {
+        clearInterval(hazardAnimationTimer);
+        hazardAnimationTimer = null;
+    }
+
+    if (hazardAnimationLayer !== null) {
+        map.removeLayer(hazardAnimationLayer);
+        hazardAnimationLayer = null;
+    }
+
+    if (alternateRouteLayer !== null) {
+        map.removeLayer(alternateRouteLayer);
+        alternateRouteLayer = null;
+    }
+
+    if (routeLayer !== null) {
+        map.removeLayer(routeLayer);
+        routeLayer = null;
+    }
+
+    if (sourceMarker !== null) {
+        map.removeLayer(sourceMarker);
+        sourceMarker = null;
+    }
+
+    if (destinationMarker !== null) {
+        map.removeLayer(destinationMarker);
+        destinationMarker = null;
+    }
+
+    // Keep hazardRoadLayer visible during route recalculation.
+}
+
+function coordinatesFromPath(points) {
+
+
+
+            return (points || []).map(point => [
+
+                point.latitude,
+
+                point.longitude
+
+            ]);
+
+
+
+        }
+
+
+
+
+
+        function drawRouteLayers(data) {
+
+
+
+            if (!data.reachable || !data.path_coordinates) {
+
+                return;
+
+            }
+
+
+
+            const primaryCoordinates =
+
+                coordinatesFromPath(data.path_coordinates);
+
+
+
+            if (primaryCoordinates.length < 2) {
+
+                return;
+
+            }
+
+
+
+            routeLayer = L.polyline(
+
+                primaryCoordinates,
+
+                {
+
+                    weight: 7,
+
+                    opacity: 0.95
+
+                }
+
+            ).addTo(map);
+
+
+
+
+
+            const alternate =
+
+                data.alternate_route;
+
+
+
+            if (
+
+                alternate &&
+
+                alternate.reachable &&
+
+                alternate.path_coordinates &&
+
+                alternate.path_coordinates.length > 1
+
+            ) {
+
+
+
+                const alternateCoordinates =
+
+                    coordinatesFromPath(
+
+                        alternate.path_coordinates
+
+                    );
+
+
+
+                alternateRouteLayer =
+
+                    L.polyline(
+
+                        alternateCoordinates,
+
+                        {
+
+                            weight: 5,
+
+                            opacity: 0.75,
+
+                            dashArray: "12 10"
+
+                        }
+
+                    ).addTo(map);
+
+
+
+                alternateRouteLayer.bindPopup(
+
+                    "<b>Alternate Evacuation Route</b>"
+
+                );
+
+
+
+            }
+
+
+
+
+
+            sourceMarker =
+
+                L.marker(primaryCoordinates[0])
+
+                    .addTo(map)
+
+                    .bindPopup(
+
+                        "<b>Evacuation Source</b>"
+
+                    );
+
+
+
+
+
+            destinationMarker =
+
+                L.marker(
+
+                    primaryCoordinates[
+
+                        primaryCoordinates.length - 1
+
+                    ]
+
+                )
+
+                    .addTo(map)
+
+                    .bindPopup(
+
+                        "<b>Evacuation Destination</b>"
+
+                    );
+
+
+
+
+
+            const allPoints =
+
+                alternateRouteLayer
+
+                    ? primaryCoordinates.concat(
+
+                        alternateRouteLayer.getLatLngs()
+
+                            .map(point => [
+
+                                point.lat,
+
+                                point.lng
+
+                            ])
+
+                    )
+
+                    : primaryCoordinates;
+
+
+
+            map.fitBounds(
+
+                L.latLngBounds(allPoints),
+
+                {
+
+                    padding: [30, 30]
+
+                }
+
+            );
+
+
+
+        }
+
+
+
+
+
+        function drawAffectedRoads(segments) {
+    if (hazardRoadLayer !== null) {
+        map.removeLayer(hazardRoadLayer);
+        hazardRoadLayer = null;
+    }
+
+    if (!segments || segments.length === 0) {
+        return;
+    }
+
+    const lines = [];
+
+    for (const item of segments) {
+        if (item.coordinates && item.coordinates.length === 2) {
+            lines.push(
+                item.coordinates.map(point => [
+                    point.latitude,
+                    point.longitude
+                ])
+            );
+        }
+    }
+
+    if (lines.length === 0) {
+        return;
+    }
+
+    hazardRoadLayer = L.polyline(lines, {
+        weight: 6,
+        opacity: 0.9,
+        dashArray: "8 8",
+        color: "#ef4444"
+    }).addTo(map);
+
+    hazardRoadLayer.bindPopup(
+        "<b>Hazard-affected road</b>"
+    );
+}
+
+function animateHazardApproach(
+
+            latitude,
+
+            longitude,
+
+            startLatitude,
+
+            startLongitude,
+
+            finalRadiusMeters,
+
+            label,
+
+            onArrival
+
+        ) {
+
+
+
+            if (hazardAnimationTimer !== null) {
+
+                clearInterval(hazardAnimationTimer);
+
+            }
+
+
+
+            if (hazardAnimationLayer !== null) {
+
+                map.removeLayer(hazardAnimationLayer);
+
+            }
+
+
+
+            const marker =
+
+                L.circleMarker(
+
+                    [startLatitude, startLongitude],
+
+                    {
+
+                        radius: 9,
+
+                        weight: 3
+
+                    }
+
+                ).addTo(map);
+
+
+
+            const circle =
+
+                L.circle(
+
+                    [startLatitude, startLongitude],
+
+                    {
+
+                        radius: 500,
+
+                        weight: 2,
+
+                        fillOpacity: 0.12
+
+                    }
+
+                ).addTo(map);
+
+
+
+            hazardAnimationLayer =
+
+                L.layerGroup([marker, circle]).addTo(map);
+
+
+
+            const steps = 30;
+
+            let step = 0;
+
+
+
+            marker.bindPopup(
+
+                `<b>${label} approaching</b>`
+
+            );
+
+
+
+            hazardAnimationTimer =
+
+                setInterval(() => {
+
+
+
+                    step++;
+
+
+
+                    const progress =
+
+                        Math.min(step / steps, 1);
+
+
+
+                    const lat =
+
+                        startLatitude +
+
+                        (
+
+                            latitude -
+
+                            startLatitude
+
+                        ) * progress;
+
+
+
+                    const lon =
+
+                        startLongitude +
+
+                        (
+
+                            longitude -
+
+                            startLongitude
+
+                        ) * progress;
+
+
+
+                    marker.setLatLng([lat, lon]);
+
+
+
+                    circle.setLatLng([lat, lon]);
+
+
+
+                    circle.setRadius(
+
+                        500 +
+
+                        (
+
+                            finalRadiusMeters -
+
+                            500
+
+                        ) * progress
+
+                    );
+
+
+
+                    if (progress >= 1) {
+
+
+
+                        clearInterval(
+
+                            hazardAnimationTimer
+
+                        );
+
+
+
+                        hazardAnimationTimer = null;
+
+
+
+                        setTimeout(() => {
+
+
+
+                            if (
+
+                                hazardAnimationLayer !== null
+
+                            ) {
+
+                                map.removeLayer(
+
+                                    hazardAnimationLayer
+
+                                );
+
+
+
+                                hazardAnimationLayer =
+
+                                    null;
+
+                            }
+
+
+
+                            if (onArrival) {
+
+                                onArrival();
+
+                            }
+
+
+
+                        }, 250);
+
+
+
+                    }
+
+
+
+                }, 100);
+
+
+
+        }
+
+
+
+
+
+/* =====================================================
+
+
+
+           FIND ROUTE
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        async function findRoute() {
+    const source = document.getElementById("source").value.trim();
+    const destination = document.getElementById("destination").value.trim();
+    const algorithm = document.getElementById("algorithm").value;
+
+    if (!source || !destination) {
+        alert("Please enter both source and destination nodes.");
+        return;
+    }
+
+    try {
+        let url;
+
+        if (algorithm === "astar") {
+            url =
+                `${API_BASE}/api/m2/route` +
+                `?source=${encodeURIComponent(source)}` +
+                `&destination=${encodeURIComponent(destination)}` +
+                `&algorithm=astar`;
+        } else if (algorithm === "dijkstra") {
+            url =
+                `${API_BASE}/api/m2/route` +
+                `?source=${encodeURIComponent(source)}` +
+                `&destination=${encodeURIComponent(destination)}` +
+                `&algorithm=dijkstra`;
+        } else {
+            url =
+                `${API_BASE}/api/m2/hazard-route` +
+                `?source=${encodeURIComponent(source)}` +
+                `&destination=${encodeURIComponent(destination)}`;
+        }
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(
+                `API error ${response.status}: ${errorText}`
+            );
+        }
+
+        const data = await response.json();
+        console.log("Routing response:", data);
+
+        const routeStatus = document.getElementById("route-status");
+        routeStatus.textContent = data.reachable
+            ? "REACHABLE"
+            : "UNREACHABLE";
+        routeStatus.className = data.reachable
+            ? "metric-value safe"
+            : "metric-value danger";
+
+        document.getElementById("route-algorithm").textContent =
+            data.algorithm;
+
+        document.getElementById("route-distance").textContent =
+            data.distance_meters !== null &&
+            data.distance_meters !== undefined
+                ? `${data.distance_meters.toFixed(2)} m`
+                : "—";
+
+        document.getElementById("nodes-explored").textContent =
+            data.nodes_explored ?? "—";
+
+        document.getElementById("route-node-count").textContent =
+            data.route_nodes ?? "—";
+
+        const routeInfo =
+            document.getElementById("route-info-value");
+
+        routeInfo.textContent =
+            data.path && data.path.length > 0
+                ? data.path.join(" → ")
+                : "No route available.";
+
+        // Clear route and markers only.
+        // Keep the hazard-road overlay visible after a hazard arrives.
+        clearMapRoute();
+
+        if (
+            data.reachable &&
+            data.path_coordinates &&
+            data.path_coordinates.length > 1
+        ) {
+            const coordinates = data.path_coordinates.map(point => [
+                point.latitude,
+                point.longitude
+            ]);
+
+            routeLayer = L.polyline(coordinates, {
+                weight: 7,
+                opacity: 0.95,
+                color: "#2563eb"
+            }).addTo(map);
+
+            sourceMarker = L.marker(coordinates[0])
+                .addTo(map)
+                .bindPopup("<b>Evacuation Source</b>");
+
+            destinationMarker = L.marker(
+                coordinates[coordinates.length - 1]
+            )
+                .addTo(map)
+                .bindPopup("<b>Evacuation Destination</b>");
+
+            if (
+                data.alternate_route &&
+                data.alternate_route.reachable &&
+                data.alternate_route.path_coordinates &&
+                data.alternate_route.path_coordinates.length > 1
+            ) {
+                const alternateCoordinates =
+                    data.alternate_route.path_coordinates.map(point => [
+                        point.latitude,
+                        point.longitude
+                    ]);
+
+                alternateRouteLayer = L.polyline(
+                    alternateCoordinates,
+                    {
+                        weight: 5,
+                        opacity: 0.85,
+                        dashArray: "12 10",
+                        color: "#f59e0b"
+                    }
+                ).addTo(map);
+
+                alternateRouteLayer.bindPopup(
+                    "<b>Alternate Evacuation Route</b>"
+                );
+
+                map.fitBounds(
+                    L.latLngBounds(
+                        coordinates.concat(alternateCoordinates)
+                    ),
+                    { padding: [30, 30] }
+                );
+            } else {
+                map.fitBounds(
+                    routeLayer.getBounds(),
+                    { padding: [30, 30] }
+                );
+            }
+        }
+    } catch (error) {
+        console.error("Routing error:", error);
+        alert("Unable to connect to the M2 routing API.");
+    }
+}
+
+async function compareAlgorithms() {
+
+    const source = document.getElementById("source").value.trim();
+    const destination = document.getElementById("destination").value.trim();
+
+    const status = document.getElementById("comparison-status");
+    const astarDistance = document.getElementById("compare-astar-distance");
+    const dijkstraDistance = document.getElementById("compare-dijkstra-distance");
+    const astarRoute = document.getElementById("compare-astar-route");
+    const dijkstraRoute = document.getElementById("compare-dijkstra-route");
+    const astarExplored = document.getElementById("compare-astar-explored");
+    const dijkstraExplored = document.getElementById("compare-dijkstra-explored");
+
+    if (!source || !destination) {
+        alert("Please enter both source and destination nodes.");
+        return;
+    }
+
+    status.textContent = "Running A* and Dijkstra on the same graph...";
+
+    try {
+        const astarUrl =
+            `${API_BASE}/api/m2/route` +
+            `?source=${encodeURIComponent(source)}` +
+            `&destination=${encodeURIComponent(destination)}` +
+            `&algorithm=astar`;
+
+        const dijkstraUrl =
+            `${API_BASE}/api/m2/route` +
+            `?source=${encodeURIComponent(source)}` +
+            `&destination=${encodeURIComponent(destination)}` +
+            `&algorithm=dijkstra`;
+
+        const [astarResponse, dijkstraResponse] = await Promise.all([
+            fetch(astarUrl),
+            fetch(dijkstraUrl)
+        ]);
+
+        if (!astarResponse.ok || !dijkstraResponse.ok) {
+            const astarText = await astarResponse.text();
+            const dijkstraText = await dijkstraResponse.text();
+            throw new Error(
+                `Comparison API error. A*: ${astarResponse.status} ${astarText}; ` +
+                `Dijkstra: ${dijkstraResponse.status} ${dijkstraText}`
+            );
+        }
+
+        const [astar, dijkstra] = await Promise.all([
+            astarResponse.json(),
+            dijkstraResponse.json()
+        ]);
+
+        const formatDistance = result =>
+            result.reachable && result.distance_meters !== null
+                ? `${result.distance_meters.toFixed(2)} m`
+                : "UNREACHABLE";
+
+        astarDistance.textContent = formatDistance(astar);
+        dijkstraDistance.textContent = formatDistance(dijkstra);
+
+        astarRoute.textContent = astar.reachable
+            ? (astar.route_nodes ?? "—")
+            : "—";
+
+        dijkstraRoute.textContent = dijkstra.reachable
+            ? (dijkstra.route_nodes ?? "—")
+            : "—";
+
+        astarExplored.textContent = astar.nodes_explored ?? "—";
+        dijkstraExplored.textContent = dijkstra.nodes_explored ?? "—";
+
+        if (astar.reachable && dijkstra.reachable) {
+            const dijkstraNodes = Number(dijkstra.nodes_explored || 0);
+            const astarNodes = Number(astar.nodes_explored || 0);
+
+            let message = "Both algorithms found a reachable route.";
+
+            if (dijkstraNodes > 0) {
+                const reduction =
+                    ((dijkstraNodes - astarNodes) / dijkstraNodes) * 100;
+
+                if (reduction >= 0) {
+                    message +=
+                        ` A* explored ${reduction.toFixed(1)}% fewer nodes.`;
+                } else {
+                    message +=
+                        ` A* explored ${Math.abs(reduction).toFixed(1)}% more nodes in this case.`;
+                }
+            }
+
+            if (
+                Math.abs(
+                    Number(astar.distance_meters) -
+                    Number(dijkstra.distance_meters)
+                ) < 0.001
+            ) {
+                message += " Both produced the same route distance.";
+            }
+
+            status.textContent = message;
+        } else {
+            status.textContent = "At least one algorithm could not reach the destination.";
+        }
+
+        console.log("A* comparison result:", astar);
+        console.log("Dijkstra comparison result:", dijkstra);
+
+    } catch (error) {
+        console.error("Algorithm comparison error:", error);
+        status.textContent = "Comparison failed. Check the M2 API connection.";
+    }
+}
+
+async function simulateFlood() {
+
+
+
+            const simulationMessage =
+
+                document.getElementById(
+
+                    "simulation-message"
+
+                );
+
+
+
+            const floodStatus =
+
+                document.getElementById(
+
+                    "flood-status"
+
+                );
+
+
+
+            simulationMessage.textContent =
+
+                "Flood wave approaching the road network...";
+
+
+
+            simulationMessage.className =
+
+                "warning";
+
+
+
+            const source =
+
+                document.getElementById("source").value.trim();
+
+
+
+            const destination =
+
+                document.getElementById("destination").value.trim();
+
+
+
+            try {
+
+
+
+                // Visual approach first. The route remains unchanged
+
+                // until the hazard reaches the affected road.
+
+                animateHazardApproach(
+
+                    13.09242,
+
+                    80.29048,
+
+                    13.0850,
+
+                    80.2850,
+
+                    1200,
+
+                    "Flood",
+
+                    async () => {
+
+
+
+                        simulationMessage.textContent =
+
+                            "Flood reached the road network — blocking affected road...";
+
+
+
+                        const response =
+
+                            await fetch(
+
+                                `${API_BASE}/api/m2/hazards/flood/` +
+
+                                `${FLOOD_TEST_ROAD}` +
+
+                                `?status=BLOCKED`,
+
+                                {
+
+                                    method: "POST"
+
+                                }
+
+                            );
+
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+
+                                `Flood API error ${response.status}`
+
+                            );
+
+                        }
+
+
+
+                        const data =
+
+                            await response.json();
+
+
+
+                        floodStatus.textContent =
+
+                            "BLOCKED";
+
+
+
+                        floodStatus.className =
+
+                            "status danger";
+
+
+
+                        document.getElementById(
+
+                            "network-status"
+
+                        ).textContent =
+
+                            "REROUTING";
+
+
+
+                        document.getElementById(
+
+                            "network-status"
+
+                        ).className =
+
+                            "status warning";
+
+
+
+                        drawAffectedRoads(
+
+                            data.road_segments
+
+                        );
+
+
+
+                        document.getElementById(
+
+                            "algorithm"
+
+                        ).value = "hazard";
+
+
+
+                        await findRoute();
+
+
+
+                        simulationMessage.textContent =
+
+                            "Flood reached the network — shortest route changed and alternate route displayed.";
+
+
+
+                        simulationMessage.className =
+
+                            "warning";
+
+
+
+                    }
+
+                );
+
+
+
+            } catch (error) {
+
+
+
+                console.error(
+
+                    "Flood simulation error:",
+
+                    error
+
+                );
+
+
+
+                simulationMessage.textContent =
+
+                    "Flood simulation failed.";
+
+
+
+                simulationMessage.className =
+
+                    "danger";
+
+
+
+                alert(
+
+                    "Unable to activate flood simulation."
+
+                );
+
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+        function updateCyclonePanel(data) {
+
+            const setValue = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = value;
+            };
+
+            setValue("cyclone-name", data.cyclone_name ?? "—");
+            setValue("cyclone-track", data.track_point_id ?? "—");
+            setValue(
+                "cyclone-wind",
+                data.wind_speed_kmh != null ? `${data.wind_speed_kmh} km/h` : "—"
+            );
+            setValue(
+                "cyclone-pressure",
+                data.pressure_hpa != null ? `${data.pressure_hpa} hPa` : "—"
+            );
+            setValue("cyclone-severity", data.severity ?? "—");
+            setValue(
+                "cyclone-nodes",
+                data.affected_nodes != null ? Number(data.affected_nodes).toLocaleString() : "—"
+            );
+            setValue(
+                "cyclone-roads",
+                data.affected_roads != null ? Number(data.affected_roads).toLocaleString() : "—"
+            );
+            setValue(
+                "cyclone-radius",
+                data.impact_radius_meters != null ? `${Number(data.impact_radius_meters).toLocaleString()} m` : "—"
+            );
+        }
+
+
+        async function simulateCyclone() {
+
+
+
+            const simulationMessage =
+
+                document.getElementById(
+
+                    "simulation-message"
+
+                );
+
+
+
+            const cycloneStatus =
+
+                document.getElementById(
+
+                    "cyclone-status"
+
+                );
+
+
+
+            simulationMessage.textContent =
+
+                "Vardah is approaching Chennai...";
+
+
+
+            simulationMessage.className =
+
+                "warning";
+
+
+
+            try {
+
+
+
+                animateHazardApproach(
+
+                    13.1,
+
+                    80.3,
+
+                    11.8,
+
+                    84.0,
+
+                    CYCLONE_RADIUS_METERS,
+
+                    "Cyclone Vardah",
+
+                    async () => {
+
+
+
+                        simulationMessage.textContent =
+
+                            "Vardah reached the Chennai impact zone — recalculating the network...";
+
+
+
+                        const url =
+
+                            `${API_BASE}/api/m2/hazards/cyclone/` +
+
+                            `${VARDAH_TRACK_POINT}` +
+
+                            `?radius_meters=${CYCLONE_RADIUS_METERS}`;
+
+
+
+                        const response =
+
+                            await fetch(
+
+                                url,
+
+                                {
+
+                                    method: "POST"
+
+                                }
+
+                            );
+
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+
+                                `Cyclone API error ${response.status}`
+
+                            );
+
+                        }
+
+
+
+                        const data =
+
+                            await response.json();
+
+
+
+                        updateCyclonePanel(data);
+
+
+
+                        cycloneStatus.textContent =
+
+                            data.status;
+
+
+
+                        if (
+
+                            data.status === "BLOCKED"
+
+                        ) {
+
+                            cycloneStatus.className =
+
+                                "status danger";
+
+                        }
+
+                        else if (
+
+                            data.status === "RESTRICTED"
+
+                        ) {
+
+                            cycloneStatus.className =
+
+                                "status warning";
+
+                        }
+
+                        else {
+
+                            cycloneStatus.className =
+
+                                "status safe";
+
+                        }
+
+
+
+                        document.getElementById(
+
+                            "network-status"
+
+                        ).textContent =
+
+                            "REROUTING";
+
+
+
+                        document.getElementById(
+
+                            "network-status"
+
+                        ).className =
+
+                            "status warning";
+
+
+
+                        drawAffectedRoads(
+
+                            data.affected_road_segments
+
+                        );
+
+
+
+                        document.getElementById(
+
+                            "algorithm"
+
+                        ).value = "hazard";
+
+
+
+                        await findRoute();
+
+
+
+                        const demoText = data.demo_route_road
+                            ? ` Vardah impact road ${data.demo_route_road} triggered the reroute.`
+                            : "";
+
+                        simulationMessage.textContent =
+
+                            `Vardah reached the impact zone — ${data.affected_roads} roads affected and the evacuation route recalculated.${demoText}`;
+
+
+
+                        simulationMessage.className =
+
+                            "warning";
+
+
+
+                    }
+
+                );
+
+
+
+            } catch (error) {
+
+
+
+                console.error(
+
+                    "Cyclone simulation error:",
+
+                    error
+
+                );
+
+
+
+                simulationMessage.textContent =
+
+                    "Cyclone simulation failed.";
+
+
+
+                simulationMessage.className =
+
+                    "danger";
+
+
+
+                alert(
+
+                    "Unable to activate the Vardah cyclone simulation."
+
+                );
+
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+        async function clearHazards() {
+
+
+
+
+
+
+
+            const simulationMessage =
+
+
+
+                document.getElementById(
+
+
+
+                    "simulation-message"
+
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+            const floodStatus =
+
+
+
+                document.getElementById(
+
+
+
+                    "flood-status"
+
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+            const cycloneStatus =
+
+
+
+                document.getElementById(
+
+
+
+                    "cyclone-status"
+
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+            try {
+
+
+
+
+
+
+
+                simulationMessage.textContent =
+
+
+
+                    "Clearing all active hazards...";
+
+
+
+
+
+
+
+
+
+
+
+                simulationMessage.className =
+
+
+
+                    "warning";
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   RESET API STATE
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                const response =
+
+
+
+                    await fetch(
+
+
+
+
+
+
+
+                        `${API_BASE}/api/m2/hazards/reset`,
+
+
+
+
+
+
+
+                        {
+
+
+
+
+
+
+
+                            method:
+
+
+
+                                "POST"
+
+
+
+
+
+
+
+                        }
+
+
+
+
+
+
+
+                    );
+
+
+
+
+
+
+
+
+
+
+
+                if (
+
+
+
+                    !response.ok
+
+
+
+                ) {
+
+
+
+
+
+
+
+                    const errorText =
+
+
+
+                        await response.text();
+
+
+
+
+
+
+
+                    throw new Error(
+
+
+
+                        `Reset API error ${response.status}: ${errorText}`
+
+
+
+                    );
+
+
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+                const data =
+
+
+
+                    await response.json();
+
+
+
+
+
+
+
+
+
+
+
+                console.log(
+
+
+
+                    "Hazard reset:",
+
+
+
+                    data
+
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   UPDATE FLOOD
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                floodStatus.textContent =
+
+
+
+                    "SAFE";
+
+
+
+
+
+
+
+
+
+
+
+                floodStatus.className =
+
+
+
+                    "status safe";
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   UPDATE CYCLONE
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                cycloneStatus.textContent =
+
+
+
+                    "SAFE";
+
+
+
+
+
+
+
+
+
+
+
+                cycloneStatus.className =
+
+
+
+                    "status safe";
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   NETWORK
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                document
+
+
+
+                    .getElementById(
+
+
+
+                        "network-status"
+
+
+
+                    )
+
+
+
+                    .textContent =
+
+
+
+                    "OPERATIONAL";
+
+
+
+
+
+
+
+
+
+
+
+                document
+
+
+
+                    .getElementById(
+
+
+
+                        "network-status"
+
+
+
+                    )
+
+
+
+                    .className =
+
+
+
+                    "status safe";
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   RETURN TO NORMAL A*
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                document
+
+
+
+                    .getElementById(
+
+
+
+                        "algorithm"
+
+
+
+                    )
+
+
+
+                    .value =
+
+
+
+                    "astar";
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   RECALCULATE NORMAL ROUTE
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                await findRoute();
+
+
+
+
+
+
+
+
+
+
+
+                /* =============================================
+
+
+
+                   FINAL MESSAGE
+
+
+
+                   ============================================= */
+
+
+
+
+
+
+
+                simulationMessage.textContent =
+
+
+
+                    "All hazards cleared — normal A* route restored.";
+
+
+
+
+
+
+
+
+
+
+
+                simulationMessage.className =
+
+
+
+                    "safe";
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            catch (error) {
+
+
+
+
+
+
+
+                console.error(
+
+
+
+                    "Hazard reset error:",
+
+
+
+                    error
+
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+                simulationMessage.textContent =
+
+
+
+                    "Unable to clear hazards.";
+
+
+
+
+
+
+
+
+
+
+
+                simulationMessage.className =
+
+
+
+                    "danger";
+
+
+
+
+
+
+
+
+
+
+
+                alert(
+
+
+
+                    "Unable to reset the hazard state."
+
+
+
+                );
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* =====================================================
+
+
+
+           INITIAL STATE
+
+
+
+           ===================================================== */
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById(
+
+
+
+                "flood-status"
+
+
+
+            )
+
+
+
+            .textContent =
+
+
+
+            "SAFE";
+
+
+
+
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById(
+
+
+
+                "cyclone-status"
+
+
+
+            )
+
+
+
+            .textContent =
+
+
+
+            "SAFE";
+
+
+
+
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById(
+
+
+
+                "network-status"
+
+
+
+            )
+
+
+
+            .textContent =
+
+
+
+            "OPERATIONAL";
+
+
+
+
+
+
+
+
+
+
+
+        document
+
+
+
+            .getElementById(
+
+
+
+                "simulation-message"
+
+
+
+            )
+
+
+
+            .textContent =
+
+
+
+            "Normal conditions";
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
