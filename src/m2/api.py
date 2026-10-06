@@ -304,3 +304,50 @@ def reset():
     global HAZARD_REGISTRY
     HAZARD_REGISTRY = HazardRegistry()
     return {"module":"M2","status":"reset","message":"All flood and cyclone hazard states have been cleared.","flood":"SAFE","cyclone":"SAFE","effective_network":"SAFE"}
+@app.get("/api/m2/distance-to-shelter")
+def distance_to_shelter(
+    source: str,
+    shelter: str
+):
+    """
+    Return the shortest safe-route distance from an evacuee
+    location node to a shelter node.
+
+    This endpoint is used by M3 Shelter Management.
+    """
+
+    if GRAPH is None:
+        raise HTTPException(503, "M2 graph is not loaded.")
+
+    if source not in GRAPH.nodes:
+        raise HTTPException(
+            404,
+            f"Source node not found: {source}"
+        )
+
+    if shelter not in GRAPH.nodes:
+        raise HTTPException(
+            404,
+            f"Shelter node not found: {shelter}"
+        )
+
+    result = hazard_astar(
+        GRAPH,
+        source,
+        shelter,
+        HAZARD_REGISTRY
+    )
+
+    return {
+        "module": "M2",
+        "source": source,
+        "shelter": shelter,
+        "reachable": result["reachable"],
+        "distance_meters": (
+            result["distance"]
+            if result["reachable"]
+            else None
+        ),
+        "path": result["path"],
+        "nodes_explored": result["nodes_explored"]
+    }

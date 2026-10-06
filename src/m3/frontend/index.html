@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M3 - Evacuation, Shelter & Severe Storm</title>
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- M3 Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     TOP HEADER
+========================================================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-title">
+            Dynamic Graph-Based Emergency Decision Support
+        </div>
+
+        <div class="brand-subtitle">
+            M3 — Evacuation + Shelter Management + Severe Storm
+        </div>
+    </div>
+
+    <div class="system-status">
+        <span id="system-status-dot" class="status-dot"></span>
+        <span id="system-status-text">M3 CONNECTING...</span>
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN DASHBOARD
+========================================================= -->
+
+<main class="dashboard">
+
+    <!-- =====================================================
+         SUMMARY CARDS
+    ====================================================== -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+            <div class="summary-icon">👥</div>
+
+            <div>
+                <div class="summary-label">
+                    Affected People
+                </div>
+
+                <div
+                    id="affected-people"
+                    class="summary-value"
+                >
+                    0
+                </div>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">🏠</div>
+
+            <div>
+                <div class="summary-label">
+                    Shelters
+                </div>
+
+                <div
+                    id="shelter-count"
+                    class="summary-value"
+                >
+                    0
+                </div>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">🚶</div>
+
+            <div>
+                <div class="summary-label">
+                    Evacuation Groups
+                </div>
+
+                <div
+                    id="group-count"
+                    class="summary-value"
+                >
+                    0
+                </div>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">⛈️</div>
+
+            <div>
+                <div class="summary-label">
+                    Storm Status
+                </div>
+
+                <div
+                    id="storm-status"
+                    class="summary-value small-value"
+                >
+                    INACTIVE
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAP + SHELTER STATUS
+    ====================================================== -->
+
+    <section class="main-grid">
+
+        <!-- MAP -->
+
+        <div class="panel map-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Emergency Shelter Map</h2>
+
+                    <p>
+                        Shelter locations and evacuation network
+                    </p>
+                </div>
+
+                <button
+                    id="refresh-map-btn"
+                    class="secondary-btn"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+            <div
+                id="map"
+                class="map-container"
+            ></div>
+
+        </div>
+
+
+        <!-- SHELTER STATUS -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Shelter Status</h2>
+
+                    <p>
+                        Capacity and occupancy
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                id="shelter-list"
+                class="shelter-list"
+            >
+
+                <div class="loading">
+                    Loading shelters...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EVACUATION MANAGEMENT
+    ====================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>🚶 Evacuation Management</h2>
+
+                <p>
+                    Capacity-aware evacuation route distribution
+                </p>
+            </div>
+
+            <span
+                id="rerouting-badge"
+                class="badge badge-safe"
+            >
+                ROUTES NORMAL
+            </span>
+
+        </div>
+
+
+        <!-- Evacuation Controls -->
+
+        <div class="control-grid">
+
+            <div class="control-group">
+
+                <label for="people-input">
+                    Affected Population
+                </label>
+
+                <input
+                    id="people-input"
+                    type="number"
+                    min="1"
+                    value="100"
+                >
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="route1-capacity">
+                    Route R1 Capacity
+                </label>
+
+                <input
+                    id="route1-capacity"
+                    type="number"
+                    min="0"
+                    value="60"
+                >
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="route2-capacity">
+                    Route R2 Capacity
+                </label>
+
+                <input
+                    id="route2-capacity"
+                    type="number"
+                    min="0"
+                    value="80"
+                >
+
+            </div>
+
+
+            <div class="control-group button-control">
+
+                <button
+                    id="simulate-btn"
+                    class="primary-btn"
+                >
+                    ▶ Simulate Evacuation
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Evacuation Result -->
+
+        <div
+            id="evacuation-result"
+            class="result-area"
+        >
+
+            <div class="empty-state">
+                Run an evacuation simulation to view route allocation.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SHELTER ASSIGNMENT
+    ====================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>🏠 Shelter Assignment</h2>
+
+                <p>
+                    M2 route distances → M3 shelter ranking
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="control-grid">
+
+            <div class="control-group">
+
+                <label for="source-node">
+                    Evacuation Source Node
+                </label>
+
+                <input
+                    id="source-node"
+                    type="text"
+                    value="80.26185_13.09112"
+                >
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="assignment-people">
+                    People
+                </label>
+
+                <input
+                    id="assignment-people"
+                    type="number"
+                    min="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div class="control-group button-control">
+
+                <button
+                    id="assign-btn"
+                    class="primary-btn"
+                >
+                    🏠 Find Shelter
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="assignment-result"
+            class="result-area"
+        >
+
+            <div class="empty-state">
+                Run shelter assignment to view primary and backup shelters.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEVERE STORM
+    ====================================================== -->
+
+    <section class="panel storm-panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>⛈️ Severe Storm Engine</h2>
+
+                <p>
+                    Storm conditions affecting evacuation and shelters
+                </p>
+            </div>
+
+            <span
+                id="storm-severity-badge"
+                class="badge badge-safe"
+            >
+                NO ACTIVE STORM
+            </span>
+
+        </div>
+
+
+        <!-- Storm Controls -->
+
+        <div class="control-grid storm-controls">
+
+            <div class="control-group">
+
+                <label for="wind-speed">
+                    Wind Speed
+                </label>
+
+                <input
+                    id="wind-speed"
+                    type="number"
+                    min="0"
+                    value="120"
+                >
+
+                <span class="input-unit">
+                    km/h
+                </span>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="rainfall">
+                    Rainfall
+                </label>
+
+                <input
+                    id="rainfall"
+                    type="number"
+                    min="0"
+                    value="150"
+                >
+
+                <span class="input-unit">
+                    mm
+                </span>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="visibility">
+                    Visibility
+                </label>
+
+                <input
+                    id="visibility"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    value="0.5"
+                >
+
+                <span class="input-unit">
+                    km
+                </span>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="affected-radius">
+                    Affected Radius
+                </label>
+
+                <input
+                    id="affected-radius"
+                    type="number"
+                    min="0"
+                    value="20"
+                >
+
+                <span class="input-unit">
+                    km
+                </span>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="severity">
+                    Severity
+                </label>
+
+                <select id="severity">
+
+                    <option value="LOW">
+                        LOW
+                    </option>
+
+                    <option value="MODERATE">
+                        MODERATE
+                    </option>
+
+                    <option value="HIGH">
+                        HIGH
+                    </option>
+
+                    <option value="EXTREME" selected>
+                        EXTREME
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group button-control">
+
+                <button
+                    id="storm-btn"
+                    class="danger-btn"
+                >
+                    ⛈️ Activate Storm
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Storm Effects -->
+
+        <div
+            id="storm-result"
+            class="storm-result"
+        >
+
+            <div class="empty-state">
+                No active severe storm.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STORM → SHELTER IMPACT
+    ====================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>⚠️ Storm → Shelter Impact</h2>
+
+                <p>
+                    Shelter availability and emergency reallocation
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="storm-shelter-layout">
+
+            <div class="storm-shelter-info">
+
+                <div class="info-row">
+
+                    <span>
+                        Active Storm
+                    </span>
+
+                    <strong id="impact-storm">
+                        NONE
+                    </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Hazard Risk
+                    </span>
+
+                    <strong id="impact-risk">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Road Restriction
+                    </span>
+
+                    <strong id="impact-road">
+                        OPEN
+                    </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        Rerouting
+                    </span>
+
+                    <strong id="impact-rerouting">
+                        NOT REQUIRED
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="storm-shelter-list"
+                class="storm-shelter-list"
+            >
+
+                <div class="empty-state">
+                    Storm shelter impact will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SYSTEM LOG
+    ====================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>System Activity</h2>
+
+                <p>
+                    M3 module events
+                </p>
+            </div>
+
+            <button
+                id="clear-log-btn"
+                class="secondary-btn"
+            >
+                Clear
+            </button>
+
+        </div>
+
+
+        <div
+            id="system-log"
+            class="system-log"
+        >
+
+            <div class="log-entry">
+                <span class="log-time">
+                    --:--:--
+                </span>
+
+                <span>
+                    M3 dashboard initialized.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <span>
+        DSA-CP • Member 3
+    </span>
+
+    <span>
+        Evacuation + Shelter Management + Severe Storm
+    </span>
+
+</footer>
+
+
+<!-- =========================================================
+     LEAFLET
+========================================================= -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- =========================================================
+     M3 JAVASCRIPT
+========================================================= -->
+
+<script src="app.js"></script>
+
+</body>
+</html>

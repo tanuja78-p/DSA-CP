@@ -15,6 +15,8 @@ class ShelterManager:
         - Track shelter occupancy
         - Assign primary and backup shelters
         - Integrate with M2 safe-route distances
+        - Apply severe-storm shelter restrictions
+        - Reallocate evacuees when a shelter becomes unsafe
     """
 
     def __init__(self, shelters=None):
@@ -43,7 +45,7 @@ class ShelterManager:
         )
 
         self.bst.insert(shelter)
-        
+
     def add_shelters(self, shelters):
         """
         Add multiple shelters at once.
@@ -52,6 +54,7 @@ class ShelterManager:
 
         for shelter in shelters:
             self.add_shelter(shelter)
+
     def get_shelter(self, shelter_id):
         """
         Return shelter using its ID.
@@ -139,7 +142,8 @@ class ShelterManager:
             "capacity": shelter.capacity,
             "occupied": shelter.occupied,
             "available": shelter.available_capacity,
-            "occupancy_percentage": shelter.occupancy_percentage,
+            "occupancy_percentage":
+                shelter.occupancy_percentage,
             "status": shelter.status,
             "accessible": shelter.accessible
         }
@@ -197,6 +201,156 @@ class ShelterManager:
         return True
 
     # =========================================================
+    # STORM -> SHELTER MANAGEMENT
+    # =========================================================
+
+    def apply_storm_to_shelters(
+        self,
+        storm,
+        affected_shelter_ids,
+        closed_status="CLOSED"
+    ):
+        """
+        Apply a severe storm to selected shelters.
+
+        affected_shelter_ids:
+            List of shelter IDs affected by the storm.
+
+        By default, affected shelters are marked CLOSED.
+
+        This does not remove shelters from the HashMap.
+        Instead, their status changes so the existing
+        shelter allocation logic automatically excludes
+        them from future assignments.
+        """
+
+        if storm is None:
+            return []
+
+        affected_ids = {
+            str(shelter_id)
+            for shelter_id in affected_shelter_ids
+        }
+
+        results = []
+
+        for shelter_id in affected_ids:
+
+            shelter = self.get_shelter(
+                shelter_id
+            )
+
+            if shelter is None:
+                continue
+
+            shelter.status = (
+                closed_status.upper()
+            )
+
+            results.append({
+                "shelter_id": shelter.shelter_id,
+                "status": shelter.status,
+                "storm_severity": storm.severity,
+                "storm_hazard_risk":
+                    storm.get_hazard_risk()
+            })
+
+        self.rebuild_bst()
+
+        return results
+
+    def restrict_shelter_from_storm(
+        self,
+        shelter_id,
+        storm,
+        status="CLOSED"
+    ):
+        """
+        Mark one shelter as unavailable because
+        of a severe storm.
+        """
+
+        shelter = self.get_shelter(
+            shelter_id
+        )
+
+        if shelter is None:
+            return {
+                "success": False,
+                "reason": "Shelter not found",
+                "shelter_id": shelter_id
+            }
+
+        shelter.status = status.upper()
+
+        self.rebuild_bst()
+
+        return {
+            "success": True,
+            "shelter_id": shelter.shelter_id,
+            "status": shelter.status,
+            "storm_severity": storm.severity
+            if storm is not None
+            else None,
+            "storm_hazard_risk":
+                storm.get_hazard_risk()
+                if storm is not None
+                else None
+        }
+
+    def reallocate_after_storm(
+        self,
+        distances,
+        people,
+        storm,
+        affected_shelter_ids
+    ):
+        """
+        Reallocate evacuees after a storm makes one or
+        more shelters unsafe.
+
+        Flow:
+
+            1. Apply storm restrictions.
+            2. Remove unavailable shelters through the
+               existing availability checks.
+            3. Rank remaining shelters.
+            4. Select new primary and backup shelter.
+            5. Return the new allocation.
+
+        Existing shelter occupancy is not automatically
+        changed by this method. Admission should happen
+        after the new shelter is confirmed.
+        """
+
+        if people <= 0:
+            raise ValueError(
+                "people must be greater than zero"
+            )
+
+        storm_updates = (
+            self.apply_storm_to_shelters(
+                storm,
+                affected_shelter_ids
+            )
+        )
+
+        allocation = self.assign_shelter(
+            distances,
+            people
+        )
+
+        return {
+            "success": allocation["success"],
+            "storm_applied": True,
+            "storm_updates": storm_updates,
+            "primary": allocation["primary"],
+            "backup": allocation["backup"],
+            "ranked": allocation["ranked"],
+            "occupancy": allocation["occupancy"]
+        }
+
+    # =========================================================
     # SUITABILITY
     # =========================================================
 
@@ -231,7 +385,11 @@ class ShelterManager:
         Accessible shelters receive a better score.
         """
 
-        return 0.0 if shelter.accessible else 1.0
+        return (
+            0.0
+            if shelter.accessible
+            else 1.0
+        )
 
     def suitability_score(
         self,
@@ -251,17 +409,24 @@ class ShelterManager:
         """
 
         if shelter.capacity > 0:
+
             capacity_ratio = (
                 shelter.available_capacity
                 / shelter.capacity
             )
+
         else:
+
             capacity_ratio = 0.0
 
-        distance_score = float(distance) / 10000.0
+        distance_score = (
+            float(distance) / 10000.0
+        )
 
-        status_score = self._status_score(
-            shelter
+        status_score = (
+            self._status_score(
+                shelter
+            )
         )
 
         accessibility_score = (
@@ -294,9 +459,9 @@ class ShelterManager:
         Parameters:
             distances:
                 Dictionary:
-                    {
-                        shelter_id: distance_in_metres
-                    }
+                {
+                    shelter_id: distance_in_metres
+                }
 
             people:
                 Number of evacuees.
@@ -327,6 +492,9 @@ class ShelterManager:
             if shelter is None:
                 continue
 
+            # CLOSED / FULL / inaccessible shelters
+            # are excluded by the existing availability
+            # logic.
             if not shelter.is_available():
                 continue
 
@@ -505,7 +673,6 @@ class ShelterManager:
         Ask M2 for distances to all supplied shelters.
 
         Returns:
-
             {
                 shelter_id: distance
             }
@@ -552,12 +719,16 @@ class ShelterManager:
         if not result.get("success"):
             return result
 
-        primary = result.get("primary")
+        primary = result.get(
+            "primary"
+        )
 
         if primary is None:
             return result
 
-        primary_id = primary["shelter_id"]
+        primary_id = primary[
+            "shelter_id"
+        ]
 
         admitted = self.admit_people(
             primary_id,
@@ -567,6 +738,7 @@ class ShelterManager:
         result["admitted"] = admitted
 
         if admitted:
+
             result["final_load"] = (
                 self.get_shelter_load(
                     primary_id
